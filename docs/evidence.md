@@ -30,7 +30,9 @@ before their first valid return (visible red cookie trace in the cold view);
 unknowns on valid payloads or checked controls fail the regression. The completion
 zoom includes 1 ns beyond the saved endpoint for visibility; no simulation work
 after the saved endpoint is implied. Primary IDs identify the focus; other visible
-transactions are listed separately.
+transactions are listed separately. Each linked `replay.json` records the exact
+signal paths and displayed radices, source hashes and original command; `focus.do`
+contains the executable view configuration.
 The driver deliberately changes external request context after acceptance in
 these correctness tests; the walker must continue using its latched VA/context.
 
@@ -52,7 +54,7 @@ Transaction 1 accepts VA 0x80000031 at 35 ns. L1 byte address 0x1800 accepts/ret
 
 N=16, seed=1, fixed L=5; primary transaction IDs [1]; visible IDs [1, 2]. Window 20–185 ns; cursor 34.999 ns; anchor event sequence 7.
 
-[Original screenshot](../results/screenshots/N16_s1_cold/screenshot_original.png), [native PS](../results/screenshots/N16_s1_cold/native.ps), [rendered export](../results/screenshots/N16_s1_cold/native_rendered.png), [GUI transcript](../results/screenshots/N16_s1_cold/replay.transcript), [exact macro](../results/screenshots/N16_s1_cold/focus.do), [hashes/provenance](../results/screenshots/N16_s1_cold/replay.json).
+[Original screenshot](../results/screenshots/N16_s1_cold/screenshot_original.png), [native PS](../results/screenshots/N16_s1_cold/native.ps), [first export page](../results/screenshots/N16_s1_cold/native_rendered.png), [GUI transcript](../results/screenshots/N16_s1_cold/replay.transcript), [exact macro](../results/screenshots/N16_s1_cold/focus.do), [hashes/provenance](../results/screenshots/N16_s1_cold/replay.json).
 
 Native export pages: [1](../results/screenshots/N16_s1_cold/native_page_01.png).
 
@@ -60,43 +62,13 @@ Native export pages: [1](../results/screenshots/N16_s1_cold/native_page_01.png).
 python3 sim/replay.py evidence/validation/fixed_s1 --entries 16 --case cold --out runs/replay_cold
 ```
 
-<details><summary>Exact signal paths and displayed radices</summary>
-
-| Signal | Radix |
-| --- | --- |
-| `/translation_tb/dut/clk` | binary |
-| `/translation_tb/dut/reset` | binary |
-| `/translation_tb/dut/flush` | binary |
-| `/translation_tb/dut/req_valid` | binary |
-| `/translation_tb/dut/req_ready` | binary |
-| `/translation_tb/dut/req_va` | hexadecimal |
-| `/translation_tb/dut/req_cookie` | unsigned |
-| `/translation_tb/dut/lookup_hit` | binary |
-| `/translation_tb/dut/walker/va_q` | hexadecimal |
-| `/translation_tb/dut/walker/state_q` | symbolic |
-| `/translation_tb/dut/walker/level_q` | unsigned |
-| `/translation_tb/dut/mem_req_valid` | binary |
-| `/translation_tb/dut/mem_req_ready` | binary |
-| `/translation_tb/dut/mem_req_addr` | hexadecimal |
-| `/translation_tb/dut/mem_resp_valid` | binary |
-| `/translation_tb/dut/mem_resp_cookie` | unsigned |
-| `/translation_tb/dut/mem_resp_data` | hexadecimal |
-| `/translation_tb/dut/fill_valid` | binary |
-| `/translation_tb/dut/resp_valid` | binary |
-| `/translation_tb/dut/resp_ready` | binary |
-| `/translation_tb/dut/resp_cookie` | unsigned |
-| `/translation_tb/dut/resp_pa` | hexadecimal |
-| `/translation_tb/dut/resp_fault` | symbolic |
-
-</details>
-
 ## Immediate accepted and consumed hit
 
 Transaction 3 is a store hit in entry 0: VA 0x80000001 → PA 0x200013001. Acceptance, first result and consumption all occur at 225 ns with zero sampled latency and no PTE reads. Neighboring hits demonstrate consecutive traffic.
 
 N=16, seed=1, fixed L=5; primary transaction IDs [3]; visible IDs [2, 3, 4, 5]. Window 210–245 ns; cursor 224.999 ns; anchor event sequence 36.
 
-[Original screenshot](../results/screenshots/N16_s1_hit/screenshot_original.png), [native PS](../results/screenshots/N16_s1_hit/native.ps), [rendered export](../results/screenshots/N16_s1_hit/native_rendered.png), [GUI transcript](../results/screenshots/N16_s1_hit/replay.transcript), [exact macro](../results/screenshots/N16_s1_hit/focus.do), [hashes/provenance](../results/screenshots/N16_s1_hit/replay.json).
+[Original screenshot](../results/screenshots/N16_s1_hit/screenshot_original.png), [native PS](../results/screenshots/N16_s1_hit/native.ps), [first export page](../results/screenshots/N16_s1_hit/native_rendered.png), [GUI transcript](../results/screenshots/N16_s1_hit/replay.transcript), [exact macro](../results/screenshots/N16_s1_hit/focus.do), [hashes/provenance](../results/screenshots/N16_s1_hit/replay.json).
 
 Native export pages: [1](../results/screenshots/N16_s1_hit/native_page_01.png).
 
@@ -104,43 +76,13 @@ Native export pages: [1](../results/screenshots/N16_s1_hit/native_page_01.png).
 python3 sim/replay.py evidence/validation/fixed_s1 --entries 16 --case hit --out runs/replay_hit
 ```
 
-<details><summary>Exact signal paths and displayed radices</summary>
-
-| Signal | Radix |
-| --- | --- |
-| `/translation_tb/dut/clk` | binary |
-| `/translation_tb/dut/reset` | binary |
-| `/translation_tb/dut/flush` | binary |
-| `/translation_tb/dut/req_valid` | binary |
-| `/translation_tb/dut/req_ready` | binary |
-| `/translation_tb/dut/req_va` | hexadecimal |
-| `/translation_tb/dut/req_cookie` | unsigned |
-| `/translation_tb/dut/lookup_hit` | binary |
-| `/translation_tb/dut/walker/va_q` | hexadecimal |
-| `/translation_tb/dut/walker/state_q` | symbolic |
-| `/translation_tb/dut/walker/level_q` | unsigned |
-| `/translation_tb/dut/mem_req_valid` | binary |
-| `/translation_tb/dut/mem_req_ready` | binary |
-| `/translation_tb/dut/mem_req_addr` | hexadecimal |
-| `/translation_tb/dut/mem_resp_valid` | binary |
-| `/translation_tb/dut/mem_resp_cookie` | unsigned |
-| `/translation_tb/dut/mem_resp_data` | hexadecimal |
-| `/translation_tb/dut/fill_valid` | binary |
-| `/translation_tb/dut/resp_valid` | binary |
-| `/translation_tb/dut/resp_ready` | binary |
-| `/translation_tb/dut/resp_cookie` | unsigned |
-| `/translation_tb/dut/resp_pa` | hexadecimal |
-| `/translation_tb/dut/resp_fault` | symbolic |
-
-</details>
-
 ## Full TLB tree-PLRU eviction
 
 With all sixteen entries occupied, transaction 29 refills at 3725 ns using PLRU victim 0. Old VPN/PPN 0x80000/0x200013 is replaced by 0x80010/0x2000a3. Tree bits update 0x0000 → 0x008b. PA 0x2000a3025 is consumed at 3735 ns. The independent log/oracle checks both victim and old/new mappings.
 
 N=16, seed=1, fixed L=5; primary transaction IDs [29]; visible IDs [28, 29, 30]. Window 3590–3755 ns; cursor 3724.999 ns; anchor event sequence 560.
 
-[Original screenshot](../results/screenshots/N16_s1_eviction/screenshot_original.png), [native PS](../results/screenshots/N16_s1_eviction/native.ps), [rendered export](../results/screenshots/N16_s1_eviction/native_rendered.png), [GUI transcript](../results/screenshots/N16_s1_eviction/replay.transcript), [exact macro](../results/screenshots/N16_s1_eviction/focus.do), [hashes/provenance](../results/screenshots/N16_s1_eviction/replay.json).
+[Original screenshot](../results/screenshots/N16_s1_eviction/screenshot_original.png), [native PS](../results/screenshots/N16_s1_eviction/native.ps), [first export page](../results/screenshots/N16_s1_eviction/native_rendered.png), [GUI transcript](../results/screenshots/N16_s1_eviction/replay.transcript), [exact macro](../results/screenshots/N16_s1_eviction/focus.do), [hashes/provenance](../results/screenshots/N16_s1_eviction/replay.json).
 
 Native export pages: [1](../results/screenshots/N16_s1_eviction/native_page_01.png), [2](../results/screenshots/N16_s1_eviction/native_page_02.png).
 
@@ -148,47 +90,13 @@ Native export pages: [1](../results/screenshots/N16_s1_eviction/native_page_01.p
 python3 sim/replay.py evidence/validation/fixed_s1 --entries 16 --case eviction --out runs/replay_eviction
 ```
 
-<details><summary>Exact signal paths and displayed radices</summary>
-
-| Signal | Radix |
-| --- | --- |
-| `/translation_tb/dut/clk` | binary |
-| `/translation_tb/dut/reset` | binary |
-| `/translation_tb/dut/flush` | binary |
-| `/translation_tb/dut/req_valid` | binary |
-| `/translation_tb/dut/req_ready` | binary |
-| `/translation_tb/dut/req_va` | hexadecimal |
-| `/translation_tb/dut/req_cookie` | unsigned |
-| `/translation_tb/dut/lookup_hit` | binary |
-| `/translation_tb/dut/walker/va_q` | hexadecimal |
-| `/translation_tb/dut/walker/state_q` | symbolic |
-| `/translation_tb/dut/walker/level_q` | unsigned |
-| `/translation_tb/dut/mem_req_valid` | binary |
-| `/translation_tb/dut/mem_req_ready` | binary |
-| `/translation_tb/dut/mem_req_addr` | hexadecimal |
-| `/translation_tb/dut/mem_resp_valid` | binary |
-| `/translation_tb/dut/mem_resp_cookie` | unsigned |
-| `/translation_tb/dut/mem_resp_data` | hexadecimal |
-| `/translation_tb/dut/fill_valid` | binary |
-| `/translation_tb/dut/cache/fill_index` | unsigned |
-| `/translation_tb/dut/cache/victim` | unsigned |
-| `/translation_tb/dut/fill_vpn` | hexadecimal |
-| `/translation_tb/dut/cache/replacement/state_q` | hexadecimal |
-| `/translation_tb/dut/resp_valid` | binary |
-| `/translation_tb/dut/resp_ready` | binary |
-| `/translation_tb/dut/resp_cookie` | unsigned |
-| `/translation_tb/dut/resp_pa` | hexadecimal |
-| `/translation_tb/dut/resp_fault` | symbolic |
-
-</details>
-
 ## Final-level PTE fault
 
 Transaction 124 reads the valid L1 pointer, then invalid final PTE 0x80004cde at 0x2000 (V=0). INVALID_PTE is returned at L0 with PA=0 at 14755 ns; no refill occurs. The full regression separately covers every supported fault/access combination at each legal level.
 
 N=16, seed=1, fixed L=5; primary transaction IDs [124]; visible IDs [124, 125]. Window 14610–14775 ns; cursor 14754.999 ns; anchor event sequence 2349.
 
-[Original screenshot](../results/screenshots/N16_s1_fault/screenshot_original.png), [native PS](../results/screenshots/N16_s1_fault/native.ps), [rendered export](../results/screenshots/N16_s1_fault/native_rendered.png), [GUI transcript](../results/screenshots/N16_s1_fault/replay.transcript), [exact macro](../results/screenshots/N16_s1_fault/focus.do), [hashes/provenance](../results/screenshots/N16_s1_fault/replay.json).
+[Original screenshot](../results/screenshots/N16_s1_fault/screenshot_original.png), [native PS](../results/screenshots/N16_s1_fault/native.ps), [first export page](../results/screenshots/N16_s1_fault/native_rendered.png), [GUI transcript](../results/screenshots/N16_s1_fault/replay.transcript), [exact macro](../results/screenshots/N16_s1_fault/focus.do), [hashes/provenance](../results/screenshots/N16_s1_fault/replay.json).
 
 Native export pages: [1](../results/screenshots/N16_s1_fault/native_page_01.png).
 
@@ -196,43 +104,13 @@ Native export pages: [1](../results/screenshots/N16_s1_fault/native_page_01.png)
 python3 sim/replay.py evidence/validation/fixed_s1 --entries 16 --case fault --out runs/replay_fault
 ```
 
-<details><summary>Exact signal paths and displayed radices</summary>
-
-| Signal | Radix |
-| --- | --- |
-| `/translation_tb/dut/clk` | binary |
-| `/translation_tb/dut/reset` | binary |
-| `/translation_tb/dut/flush` | binary |
-| `/translation_tb/dut/req_valid` | binary |
-| `/translation_tb/dut/req_ready` | binary |
-| `/translation_tb/dut/req_va` | hexadecimal |
-| `/translation_tb/dut/req_cookie` | unsigned |
-| `/translation_tb/dut/lookup_hit` | binary |
-| `/translation_tb/dut/walker/va_q` | hexadecimal |
-| `/translation_tb/dut/walker/state_q` | symbolic |
-| `/translation_tb/dut/walker/level_q` | unsigned |
-| `/translation_tb/dut/mem_req_valid` | binary |
-| `/translation_tb/dut/mem_req_ready` | binary |
-| `/translation_tb/dut/mem_req_addr` | hexadecimal |
-| `/translation_tb/dut/mem_resp_valid` | binary |
-| `/translation_tb/dut/mem_resp_cookie` | unsigned |
-| `/translation_tb/dut/mem_resp_data` | hexadecimal |
-| `/translation_tb/dut/fill_valid` | binary |
-| `/translation_tb/dut/resp_valid` | binary |
-| `/translation_tb/dut/resp_ready` | binary |
-| `/translation_tb/dut/resp_cookie` | unsigned |
-| `/translation_tb/dut/resp_pa` | hexadecimal |
-| `/translation_tb/dut/resp_fault` | symbolic |
-
-</details>
-
 ## All populated entries cleared
 
 At 6835 ns, the observed validity mask changes 0xffff → 0x0000 and PLRU 0x3f4f → 0x0000. All sixteen individual valid bits, including 8–15, are visibly set before the edge and clear afterward. Transaction 53 subsequently misses. This is a local full-capacity test, not a reproduced upstream run.
 
 N=16, seed=1, fixed L=5; primary transaction IDs []; visible IDs [52, 53]. Window 6815–6870 ns; cursor 6835.001 ns; anchor event sequence 1056.
 
-[Original screenshot](../results/screenshots/N16_s1_full_flush/screenshot_original.png), [native PS](../results/screenshots/N16_s1_full_flush/native.ps), [rendered export](../results/screenshots/N16_s1_full_flush/native_rendered.png), [GUI transcript](../results/screenshots/N16_s1_full_flush/replay.transcript), [exact macro](../results/screenshots/N16_s1_full_flush/focus.do), [hashes/provenance](../results/screenshots/N16_s1_full_flush/replay.json).
+[Original screenshot](../results/screenshots/N16_s1_full_flush/screenshot_original.png), [native PS](../results/screenshots/N16_s1_full_flush/native.ps), [first export page](../results/screenshots/N16_s1_full_flush/native_rendered.png), [GUI transcript](../results/screenshots/N16_s1_full_flush/replay.transcript), [exact macro](../results/screenshots/N16_s1_full_flush/focus.do), [hashes/provenance](../results/screenshots/N16_s1_full_flush/replay.json).
 
 Native export pages: [1](../results/screenshots/N16_s1_full_flush/native_page_01.png).
 
@@ -240,43 +118,13 @@ Native export pages: [1](../results/screenshots/N16_s1_full_flush/native_page_01
 python3 sim/replay.py evidence/validation/fixed_s1 --entries 16 --case full_flush --out runs/replay_full_flush
 ```
 
-<details><summary>Exact signal paths and displayed radices</summary>
-
-| Signal | Radix |
-| --- | --- |
-| `/translation_tb/dut/clk` | binary |
-| `/translation_tb/dut/reset` | binary |
-| `/translation_tb/dut/flush` | binary |
-| `/translation_tb/dut/cache/entries_q[0].valid` | binary |
-| `/translation_tb/dut/cache/entries_q[1].valid` | binary |
-| `/translation_tb/dut/cache/entries_q[2].valid` | binary |
-| `/translation_tb/dut/cache/entries_q[3].valid` | binary |
-| `/translation_tb/dut/cache/entries_q[4].valid` | binary |
-| `/translation_tb/dut/cache/entries_q[5].valid` | binary |
-| `/translation_tb/dut/cache/entries_q[6].valid` | binary |
-| `/translation_tb/dut/cache/entries_q[7].valid` | binary |
-| `/translation_tb/dut/cache/entries_q[8].valid` | binary |
-| `/translation_tb/dut/cache/entries_q[9].valid` | binary |
-| `/translation_tb/dut/cache/entries_q[10].valid` | binary |
-| `/translation_tb/dut/cache/entries_q[11].valid` | binary |
-| `/translation_tb/dut/cache/entries_q[12].valid` | binary |
-| `/translation_tb/dut/cache/entries_q[13].valid` | binary |
-| `/translation_tb/dut/cache/entries_q[14].valid` | binary |
-| `/translation_tb/dut/cache/entries_q[15].valid` | binary |
-| `/translation_tb/dut/cache/replacement/state_q` | hexadecimal |
-| `/translation_tb/dut/req_valid` | binary |
-| `/translation_tb/dut/req_ready` | binary |
-| `/translation_tb/dut/resp_valid` | binary |
-
-</details>
-
 ## Mid-walk reset, late discard and recovery
 
 Transaction 120 has an accepted L1 read, then reset cancels it at 14205 ns. Its late return at 14245 ns is discarded. Recovery transaction 121 walks and completes PA 0x200013023 at 14385 ns. Cookie and state traces distinguish the canceled and current work; no stale refill/result is accepted.
 
 N=16, seed=1, fixed L=5; primary transaction IDs [120, 121]; visible IDs [119, 120, 121]. Window 14160–14400 ns; cursor 14204.999 ns; anchor event sequence 2261.
 
-[Original screenshot](../results/screenshots/N16_s1_mid_reset/screenshot_original.png), [native PS](../results/screenshots/N16_s1_mid_reset/native.ps), [rendered export](../results/screenshots/N16_s1_mid_reset/native_rendered.png), [GUI transcript](../results/screenshots/N16_s1_mid_reset/replay.transcript), [exact macro](../results/screenshots/N16_s1_mid_reset/focus.do), [hashes/provenance](../results/screenshots/N16_s1_mid_reset/replay.json).
+[Original screenshot](../results/screenshots/N16_s1_mid_reset/screenshot_original.png), [native PS](../results/screenshots/N16_s1_mid_reset/native.ps), [first export page](../results/screenshots/N16_s1_mid_reset/native_rendered.png), [GUI transcript](../results/screenshots/N16_s1_mid_reset/replay.transcript), [exact macro](../results/screenshots/N16_s1_mid_reset/focus.do), [hashes/provenance](../results/screenshots/N16_s1_mid_reset/replay.json).
 
 Native export pages: [1](../results/screenshots/N16_s1_mid_reset/native_page_01.png).
 
@@ -284,43 +132,13 @@ Native export pages: [1](../results/screenshots/N16_s1_mid_reset/native_page_01.
 python3 sim/replay.py evidence/validation/fixed_s1 --entries 16 --case mid_reset --out runs/replay_mid_reset
 ```
 
-<details><summary>Exact signal paths and displayed radices</summary>
-
-| Signal | Radix |
-| --- | --- |
-| `/translation_tb/dut/clk` | binary |
-| `/translation_tb/dut/reset` | binary |
-| `/translation_tb/dut/flush` | binary |
-| `/translation_tb/dut/req_valid` | binary |
-| `/translation_tb/dut/req_ready` | binary |
-| `/translation_tb/dut/req_va` | hexadecimal |
-| `/translation_tb/dut/req_cookie` | unsigned |
-| `/translation_tb/dut/lookup_hit` | binary |
-| `/translation_tb/dut/walker/va_q` | hexadecimal |
-| `/translation_tb/dut/walker/state_q` | symbolic |
-| `/translation_tb/dut/walker/level_q` | unsigned |
-| `/translation_tb/dut/mem_req_valid` | binary |
-| `/translation_tb/dut/mem_req_ready` | binary |
-| `/translation_tb/dut/mem_req_addr` | hexadecimal |
-| `/translation_tb/dut/mem_resp_valid` | binary |
-| `/translation_tb/dut/mem_resp_cookie` | unsigned |
-| `/translation_tb/dut/mem_resp_data` | hexadecimal |
-| `/translation_tb/dut/fill_valid` | binary |
-| `/translation_tb/dut/resp_valid` | binary |
-| `/translation_tb/dut/resp_ready` | binary |
-| `/translation_tb/dut/resp_cookie` | unsigned |
-| `/translation_tb/dut/resp_pa` | hexadecimal |
-| `/translation_tb/dut/resp_fault` | symbolic |
-
-</details>
-
 ## Mid-walk flush, late discard and recovery
 
 Transaction 122 has an accepted L1 read, then flush cancels it at 14425 ns. The late return at 14465 ns is discarded. Transaction 123 recovers with a new walk and PA 0x200013023 at 14605 ns. Reset/flush at other phases and return-edge conflicts are covered in the full logs.
 
 N=16, seed=1, fixed L=5; primary transaction IDs [122, 123]; visible IDs [121, 122, 123]. Window 14380–14620 ns; cursor 14424.999 ns; anchor event sequence 2299.
 
-[Original screenshot](../results/screenshots/N16_s1_mid_flush/screenshot_original.png), [native PS](../results/screenshots/N16_s1_mid_flush/native.ps), [rendered export](../results/screenshots/N16_s1_mid_flush/native_rendered.png), [GUI transcript](../results/screenshots/N16_s1_mid_flush/replay.transcript), [exact macro](../results/screenshots/N16_s1_mid_flush/focus.do), [hashes/provenance](../results/screenshots/N16_s1_mid_flush/replay.json).
+[Original screenshot](../results/screenshots/N16_s1_mid_flush/screenshot_original.png), [native PS](../results/screenshots/N16_s1_mid_flush/native.ps), [first export page](../results/screenshots/N16_s1_mid_flush/native_rendered.png), [GUI transcript](../results/screenshots/N16_s1_mid_flush/replay.transcript), [exact macro](../results/screenshots/N16_s1_mid_flush/focus.do), [hashes/provenance](../results/screenshots/N16_s1_mid_flush/replay.json).
 
 Native export pages: [1](../results/screenshots/N16_s1_mid_flush/native_page_01.png).
 
@@ -328,43 +146,13 @@ Native export pages: [1](../results/screenshots/N16_s1_mid_flush/native_page_01.
 python3 sim/replay.py evidence/validation/fixed_s1 --entries 16 --case mid_flush --out runs/replay_mid_flush
 ```
 
-<details><summary>Exact signal paths and displayed radices</summary>
-
-| Signal | Radix |
-| --- | --- |
-| `/translation_tb/dut/clk` | binary |
-| `/translation_tb/dut/reset` | binary |
-| `/translation_tb/dut/flush` | binary |
-| `/translation_tb/dut/req_valid` | binary |
-| `/translation_tb/dut/req_ready` | binary |
-| `/translation_tb/dut/req_va` | hexadecimal |
-| `/translation_tb/dut/req_cookie` | unsigned |
-| `/translation_tb/dut/lookup_hit` | binary |
-| `/translation_tb/dut/walker/va_q` | hexadecimal |
-| `/translation_tb/dut/walker/state_q` | symbolic |
-| `/translation_tb/dut/walker/level_q` | unsigned |
-| `/translation_tb/dut/mem_req_valid` | binary |
-| `/translation_tb/dut/mem_req_ready` | binary |
-| `/translation_tb/dut/mem_req_addr` | hexadecimal |
-| `/translation_tb/dut/mem_resp_valid` | binary |
-| `/translation_tb/dut/mem_resp_cookie` | unsigned |
-| `/translation_tb/dut/mem_resp_data` | hexadecimal |
-| `/translation_tb/dut/fill_valid` | binary |
-| `/translation_tb/dut/resp_valid` | binary |
-| `/translation_tb/dut/resp_ready` | binary |
-| `/translation_tb/dut/resp_cookie` | unsigned |
-| `/translation_tb/dut/resp_pa` | hexadecimal |
-| `/translation_tb/dut/resp_fault` | symbolic |
-
-</details>
-
 ## Completed checks and zero failures
 
 The final saved state has completed=1 and failures=0. The separate genuine Transcript-window capture prints the saved TRANSLATION_PASS/RUN_COMPLETE lines verbatim and observed finish counts: 1317 accepted, 1294 completed, 23 canceled, 2,193,117 checks. It also identifies the saved full regression as passed with 31 steps and 19 expected failures. These are explicitly labeled saved-run records, not a new live execution of the full regression.
 
 N=16, seed=1, fixed L=5; primary transaction IDs []; visible IDs [1319]. Window 161980–162011 ns; cursor 162010 ns; anchor event sequence 26501.
 
-[Original screenshot](../results/screenshots/N16_s1_completion/screenshot_original.png), [native PS](../results/screenshots/N16_s1_completion/native.ps), [rendered export](../results/screenshots/N16_s1_completion/native_rendered.png), [GUI transcript](../results/screenshots/N16_s1_completion/replay.transcript), [exact macro](../results/screenshots/N16_s1_completion/focus.do), [hashes/provenance](../results/screenshots/N16_s1_completion/replay.json).
+[Original screenshot](../results/screenshots/N16_s1_completion/screenshot_original.png), [native PS](../results/screenshots/N16_s1_completion/native.ps), [first export page](../results/screenshots/N16_s1_completion/native_rendered.png), [GUI transcript](../results/screenshots/N16_s1_completion/replay.transcript), [exact macro](../results/screenshots/N16_s1_completion/focus.do), [hashes/provenance](../results/screenshots/N16_s1_completion/replay.json).
 
 Native export pages: [1](../results/screenshots/N16_s1_completion/native_page_01.png).
 
@@ -373,18 +161,3 @@ Native export pages: [1](../results/screenshots/N16_s1_completion/native_page_01
 ```sh
 python3 sim/replay.py evidence/validation/fixed_s1 --entries 16 --case completion --out runs/replay_completion
 ```
-
-<details><summary>Exact signal paths and displayed radices</summary>
-
-| Signal | Radix |
-| --- | --- |
-| `/translation_tb/dut/clk` | binary |
-| `/translation_tb/dut/reset` | binary |
-| `/translation_tb/dut/flush` | binary |
-| `/translation_tb/dut/req_valid` | binary |
-| `/translation_tb/dut/resp_valid` | binary |
-| `/translation_tb/completed` | unsigned |
-| `/translation_tb/failures` | unsigned |
-
-</details>
-

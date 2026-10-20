@@ -22,6 +22,16 @@ Every row retains the trace seed/hash, image hash and tested source.
 - 60 malformed/truncated/duplicate/inconsistent log mutations rejected; 19 designated negative tool/checker/coverage/timeout/exit tests failed as required. Expected failures are separate from positive results. Two supplemental duplicate-state injections at 8/16 also failed the intended checker; [records](../results/supplemental/supplemental.json) retain their separate source and exits. The canonical 19 already include the four-entry duplicate test.
 - 48 performance simulations, 393,216 accepted and completed translations, no faults/cancellations. Every log was independently replayed and reconciled. Zero-sample rates and means are null, not zero.
 
+The [clean full pipeline](../results/clean-pipeline.json) passed all 14 steps
+from source `519062811f0ead885d63d970472e621d4576663e` using checkout/output paths
+containing spaces: full regression, 48 experiments, archive verification,
+coverage, plots and eight GUI replays. All 144 metric rows match the canonical
+rows except source revision; input hashes match exactly.
+[validation.json](../results/validation.json) records manifest/artifact hashes and
+the retained private location of the original clean-run outputs. The canonical
+[archive verification](../results/archive-validation.json) covers 69 successful
+logs and 1158 files. Core RTL and verification bytes match the tested sources.
+
 Finite regressions and coverage are not a correctness proof. No upstream defect
 reproduction, FPGA validation, synthesis/timing/area/power measurement, CPU/OS
 integration, course video or course submission is claimed.

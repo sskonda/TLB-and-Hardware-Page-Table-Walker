@@ -1,11 +1,10 @@
 # Translation subsystem architecture
 
-Status: architecture and experiment choices accepted on 2026-10-19, with a
-combinational immediate-hit response required. Relevant course sources have now
-been reviewed; see [source-review.md](source-review.md). Values marked **P** below are
-explicit project choices accepted with that timing correction, not requirements
-inferred from the course or a claim of complete ISA compliance. The requirements
-matrix is in [verification.md](verification.md).
+The address, protocol and experiment choices below were accepted on 2026-10-19,
+with combinational immediate hits required. **P** marks adopted project choices,
+not inferred course requirements or full ISA compliance. The proposal does not
+specify Sv32 or Sv39. See [verification.md](verification.md) for the test matrix
+and [source-review.md](source-review.md) for the sources reviewed before RTL.
 
 ## Sources and required scope
 
@@ -21,22 +20,6 @@ complete observed transaction logs, exhaustive standalone PLRU checks, fault and
 protocol stress, reproducible automation, and genuine simulator evidence. CPU/OS
 integration, UVM, prefetch, walker caches, superpages, ASIDs, and virtualization
 are excluded. There is no claim of implementing a complete RISC-V MMU.
-
-The local proposal and guidelines have been read. Relevant textbook and lecture
-sections have been reviewed. The guidelines permit justified HDL prototypes.
-Private course documents and research working copies remain outside this repository.
-
-## Decisions
-
-1. The address/PTE, permission, and cancellation profile below is accepted.
-   The proposal itself does not specify Sv32 or Sv39.
-2. A **combinational immediate-hit response** is required. Same-edge acceptance,
-   first availability, and consumption are permitted, with zero sampled hit
-   latency. An unconsumed accepted hit is captured in response registers.
-3. The experiment manifest below is accepted, including latency, lengths,
-   seeds, working sets, strides, and measurement boundaries.
-4. The course-source prerequisite is resolved. No added requirement changes the
-   selected ModelSim platform or bounded standalone scope.
 
 ## Chosen address and PTE profile
 
@@ -135,7 +118,7 @@ all bits to zero. Victim traversal follows bits for log2(N) steps. Updating leaf
 k sets each bit on its path away from k. Update once on an accepted TLB hit
 (including a permission-fault hit), and once on a successful refill, never on
 stalled valid, failed walks, canceled work, or response consumption. No simultaneous
-hit and refill occurs with the proposed single-request controller. Invalid-first
+hit and refill occurs with the single-request controller. Invalid-first
 refills still update PLRU. A separate oracle uses recursively partitioned leaf
 sets, not the RTL heap iterator.
 

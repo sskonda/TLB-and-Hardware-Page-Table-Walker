@@ -1,13 +1,11 @@
 # Requirements to tests matrix
 
-Status: implementation and regression matrix; final validation records are
-produced by `sim/regress.py`. Architecture
-choices in [architecture.md](architecture.md) are accepted, including immediate
-combinational hits; course-source review is complete for the relevant material. P denotes an explicit
-chosen contract, R a project/proposal requirement. A row's presence is not test evidence.
-All applicable directed tests run separately at capacities 4, 8, and 16.
+The accepted contracts are in [architecture.md](architecture.md), including
+immediate combinational hits. **P** denotes an adopted choice; **R** a project or
+proposal requirement. A row's presence is not test evidence. All applicable tests
+run separately at 4, 8 and 16 entries; executed closure is recorded below.
 
-| ID | Origin and requirement | Planned independent checks and coverage goal |
+| ID | Origin and requirement | Independent checks and coverage goal |
 | --- | --- | --- |
 | T01 | R configurable fully associative TLB | Compile/elaborate/run N=4/8/16 with no source edits; reject unsupported capacity before design simulation |
 | T02 | R reset/empty | Empty miss, all valid bits cleared, tree zero, outputs known; reset both idle and busy |
@@ -27,7 +25,7 @@ All applicable directed tests run separately at capacities 4, 8, and 16.
 | T16 | R mid-walk cancellation | Reset and flush separately in ISSUE before acceptance, WAIT at each level, pointer transition, final decode/refill edge, RESULT held/consuming; no stale refill/result |
 | T17 | R late response/recovery | Keep real accepted read pending across cancellation; logged discard on return, unique cookie, correct next request even when stale response and new acceptance coincide |
 | T18 | R repeated controls | Reset/flush pulses repeated, combined reset+flush priority, controls coincident with memory/response handshakes; recovery checked for each case |
-| T19 | R seeded randomized tables/traffic | Seeds 1/7/42 proposed; independently generated sparse image and arbitrary offsets/high bits/accesses; compare translation and full PTE paths |
+| T19 | R seeded randomized tables/traffic | Seeds 1/7/42; independently generated sparse image and arbitrary offsets/high bits/accesses; compare translation and full PTE paths |
 | T20 | R variable-latency stress | Separate seeded L=1..11 with request/response stalls and random controls; no performance mixing; scoreboard uses actual accepted timing |
 | T21 | R invariant/unknown checks | Explicit X/Z rejection on meaningful ports/state; no orphan/duplicate response, held payload changes, duplicate refill, or counters; no dependence on DUT victim/path |
 | T22 | R checker sensitivity | Deliberate wrong PA, wrong PTE path, wrong victim, missed flush high entry, stale result, unknown payload, missing coverage and unexpected stop must each fail with nonzero exit |
