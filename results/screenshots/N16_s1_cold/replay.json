@@ -126,10 +126,7 @@
   "sha256": {
     "focus.do": "be0c373fd27e6651343ffe1798b28ea05cd1d4c22c21e21022305f9e81ff9a8e",
     "native.ps": "c06ecf74a08e527894a555833aef8ad0f81aa1cb0a160b62ae2e27106ed54f4c",
-    "native_rendered.png": "18eca55b92226e7209d1979fb47578ce3935d49f9f13da9c610e9661805d85a0",
     "replay.transcript": "74387dcbaf1e14735b8530bf11ccf899b8f02a8b9c6abd5f73d8570f45775010",
-    "screenshot_original.png": "c574896200141b1258fe265bc0c7bc7a62b1b6a491b895278609829ef5ff33c2",
-    "stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "translation_16.wlf": "7f42fed2d2aa1a408554c9ddecc65393380486d81de4586ae1d5d41816ff3416"
+    "screenshot_original.png": "c574896200141b1258fe265bc0c7bc7a62b1b6a491b895278609829ef5ff33c2"
   }
 }

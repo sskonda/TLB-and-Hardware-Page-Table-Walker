@@ -182,11 +182,12 @@ def main():
             print('Interactive replay opened. Close ModelSim when finished.');process.wait()
     if 'REPLAY_READY' not in (out/'replay.transcript').read_text():
         raise RuntimeError('Replay did not finish configuration')
+    if not (out/'stdout.txt').stat().st_size:
+        (out/'stdout.txt').unlink()
     if args.rasterize:
         if not args.export: raise ValueError('--rasterize requires --export')
         subprocess.run(['gs','-q','-dSAFER','-dBATCH','-dNOPAUSE','-sDEVICE=png16m','-r150',
                         '-sOutputFile='+str(out/'native_page_%02d.png'),str(out/'native.ps')],check=True)
-        shutil.copyfile(out/'native_page_01.png',out/'native_rendered.png')
     record['sha256']={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(out.iterdir()) if p.is_file()}
     (out/'replay.json').write_text(json.dumps(record,indent=2)+'\n')
     print('Replay records: '+str(out));return 0

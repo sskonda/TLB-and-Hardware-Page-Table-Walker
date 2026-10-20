@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Archive observed runs losslessly, then verify hashes, logs and measured tables."""
+"""Archive observed runs and verify logs, measurements and original capture provenance."""
 import argparse
 import csv
 import gzip
@@ -97,13 +97,58 @@ def verify(folder):
             'correctness_checks':checks,'metric_rows':len(rows),'archived_files':len(actual)}
 
 
+def verify_results(folder, evidence):
+    record = json.loads((folder/'validation.json').read_text())
+    expected = {}
+    for name, value in record['artifact_sha256'].items():
+        path = Path(name)
+        if path.is_absolute() or '..' in path.parts or path.parts[0]!='results':
+            raise ValueError('Invalid result path: '+name)
+        expected[str(path.relative_to('results'))] = value
+    actual = {str(p.relative_to(folder)) for p in folder.rglob('*') if p.is_file() and p!=folder/'validation.json'}
+    if record.get('passed') is not True or actual!=set(expected):
+        raise ValueError('Result file set differs')
+    for name, value in expected.items():
+        if digest((folder/name).read_bytes())!=value:
+            raise ValueError('Result hash mismatch: '+name)
+    run = evidence/'validation/fixed_s1'
+    manifest = json.loads((run/'manifest.json').read_text())
+    log = gzip.decompress((run/'translation_16.jsonl.gz').read_bytes())
+    wlf_hash = digest(gzip.decompress((run/'translation_16.wlf.gz').read_bytes()))
+    events = [json.loads(line) for line in log.splitlines()]
+    captures = sorted((folder/'screenshots').glob('*/replay.json'))
+    cases = {'cold','hit','eviction','fault','full_flush','mid_reset','mid_flush','completion'}
+    if {json.loads(p.read_text())['case'] for p in captures}!=cases or len(captures)!=len(cases):
+        raise ValueError('Incomplete capture set')
+    for path in captures:
+        capture = json.loads(path.read_text())
+        if (capture['source_log_sha256']!=digest(log) or capture['source_wlf_sha256']!=wlf_hash
+                or capture['source_commit']!=manifest['source_commit'] or capture['run_id']!=events[0]['run']
+                or capture['screenshot_status']!='captured' or capture['entries']!=16 or capture['seed']!=1):
+            raise ValueError('Capture provenance mismatch: '+capture['case'])
+        anchor = events[capture['event_seq']]
+        if not capture['start_ns']<=anchor['time_ns']<=capture['end_ns']:
+            raise ValueError('Capture window omits anchor')
+        originals = {'screenshot_original.png','native.ps'}
+        if capture['case']=='completion': originals.add('transcript_screenshot_original.png')
+        if not originals<=capture['sha256'].keys(): raise ValueError('Missing original capture')
+        for name, value in capture['sha256'].items():
+            if Path(name).name!=name or digest((path.parent/name).read_bytes())!=value:
+                raise ValueError('Changed capture: '+str(path.parent/name))
+    return {'status':'PASS','result_files':len(actual),'capture_views':len(captures),'original_screenshots':9}
+
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--regression',type=Path);parser.add_argument('--experiments',type=Path)
     parser.add_argument('--out',type=Path);parser.add_argument('--verify',type=Path)
+    parser.add_argument('--results',type=Path,help='Verify publication/capture files; uses --verify archive or repository evidence')
     args=parser.parse_args()
-    if args.verify:
-        print(json.dumps(verify(args.verify.resolve()),indent=2));return 0
+    reports = {}
+    if args.verify: reports['archive'] = verify(args.verify.resolve())
+    if args.results: reports['results'] = verify_results(args.results.resolve(),args.verify.resolve() if args.verify else ROOT/'evidence')
+    if reports:
+        print(json.dumps(next(iter(reports.values())) if len(reports)==1 else reports,indent=2));return 0
     if not all([args.regression,args.experiments,args.out]):
         parser.error('--regression, --experiments and --out are required to archive')
     regression=json.loads((args.regression/'regression.json').read_text())

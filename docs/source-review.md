@@ -45,10 +45,11 @@ revisions. Historical path and merge-parent inventories were generated with
 | [tlb-v](https://github.com/Naminar/tlb-v) | aa62aea79953fe15531ca5f74b7f255a600f2bb4 | 14 | 100 | 12 | MIT |
 | [Stitt tutorial](https://github.com/ARC-Lab-UF/sv-tutorial) | 212f2850a9c848508132221a8b8b7d70a239337e | 14 | 382 | 21 | GPL-3.0 |
 
-[reference-history.json](reference-history.json) records the complete reachable
+[reference-history.json.gz](reference-history.json.gz) records the complete reachable
 graph, all fetched ref names/tips, and changed historical paths separately against
 **each parent**, including roots and merge parents. Its 72/962/112 parent
 comparisons cover BSC/CVA5/tlb-v respectively. The tutorial has 403 comparisons.
+The lossless gzip ledger can be read with `gzip -dc docs/reference-history.json.gz`.
 No mirror, source extraction, or probe is published here. Hidden/unadvertised
 remote objects and unreachable commits are outside the meaning of reachable.
 

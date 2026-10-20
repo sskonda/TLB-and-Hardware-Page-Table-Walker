@@ -21,7 +21,7 @@ covergroups, class randomization or vendor IP is required.
 ```sh
 python3 sim/regress.py
 python3 sim/reproduce.py --out "runs/full reproduction" --screenshots
-python3 tools/evidence.py --verify evidence
+python3 tools/evidence.py --verify evidence --results results
 ```
 
 The first command runs the full correctness/coverage/parser/failure matrix. The

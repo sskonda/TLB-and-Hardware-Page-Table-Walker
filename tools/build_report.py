@@ -10,7 +10,7 @@ def build(evidence, plots, output):
     from reportlab.lib import colors
     from reportlab.lib.enums import TA_CENTER, TA_JUSTIFY
     from reportlab.lib.styles import ParagraphStyle
-    from reportlab.platypus import BaseDocTemplate, Frame, FrameBreak, Image, NextPageTemplate, PageBreak, PageTemplate, Paragraph, Spacer, Table, TableStyle
+    from reportlab.platypus import BaseDocTemplate, Frame, FrameBreak, Image, NextPageTemplate, PageBreak, PageTemplate, Paragraph, Table, TableStyle
     metrics=list(csv.DictReader((evidence/'performance/metrics.csv').open()))
     experiment=json.loads((evidence/'performance/experiments.json').read_text())
     regression=json.loads((evidence/'validation/regression.json').read_text())

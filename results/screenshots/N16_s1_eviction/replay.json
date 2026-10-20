@@ -142,10 +142,7 @@
   "sha256": {
     "focus.do": "e90fa990115a4c33e6201f10a14d40d258a5a36c6075da919111ae42632f168e",
     "native.ps": "5464111dff92f6f39d476ad60390edabe40f0b0fa78b283754cba3b172b10b4b",
-    "native_rendered.png": "78e7b9fcad1596da1878b496c8ccbaed945740d8874b4c17fee07835c86a9c93",
     "replay.transcript": "79a64acc4dc0d05f3f0a46bd6cf0debfa31265e85167c2b30f2be30b98512f06",
-    "screenshot_original.png": "23dd56c0e66b5fa4029ef352ddd766faf1631ad2b5984c9c1a94bdf1002f7647",
-    "stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "translation_16.wlf": "7f42fed2d2aa1a408554c9ddecc65393380486d81de4586ae1d5d41816ff3416"
+    "screenshot_original.png": "23dd56c0e66b5fa4029ef352ddd766faf1631ad2b5984c9c1a94bdf1002f7647"
   }
 }

@@ -4,10 +4,12 @@ Eight unaltered Wave-window PNG captures and one Transcript-window PNG were
 captured directly from **ModelSim Intel FPGA Starter Edition 2020.1**, using X11
 ImageMagick `import -window`. They are actual simulator GUI pixels. No screenshot
 was fabricated, redrawn, cropped or annotated. Filenames and this index supply
-labels. Each folder also preserves a distinct native ModelSim PostScript export
-(`native.ps`) and Ghostscript-rendered copy (`native_rendered.png`); those exports
-are not screenshots. Numbered `native_page_XX.png` files preserve every exported
-page; `native_rendered.png` is a first-page preview. ModelSim's native print format
+labels. Each folder preserves a distinct native ModelSim PostScript export
+(`native.ps`) and every Ghostscript-rendered `native_page_XX.png`; these exports
+are not screenshots. The shared WLF is stored once in the archive linked below.
+Replay metadata preserves the original execution command and retained file hashes;
+duplicate WLF copies and preview aliases were removed during repository cleanup.
+ModelSim's native print format
 can paginate signal rows and elide short bus labels. GUI screenshots and logs
 retain the corresponding values. All originals were visually inspected at native size.
 
@@ -54,7 +56,7 @@ Transaction 1 accepts VA 0x80000031 at 35 ns. L1 byte address 0x1800 accepts/ret
 
 N=16, seed=1, fixed L=5; primary transaction IDs [1]; visible IDs [1, 2]. Window 20–185 ns; cursor 34.999 ns; anchor event sequence 7.
 
-[Original screenshot](../results/screenshots/N16_s1_cold/screenshot_original.png), [native PS](../results/screenshots/N16_s1_cold/native.ps), [first export page](../results/screenshots/N16_s1_cold/native_rendered.png), [GUI transcript](../results/screenshots/N16_s1_cold/replay.transcript), [exact macro](../results/screenshots/N16_s1_cold/focus.do), [hashes/provenance](../results/screenshots/N16_s1_cold/replay.json).
+[Original screenshot](../results/screenshots/N16_s1_cold/screenshot_original.png), [native PS](../results/screenshots/N16_s1_cold/native.ps), [GUI transcript](../results/screenshots/N16_s1_cold/replay.transcript), [exact macro](../results/screenshots/N16_s1_cold/focus.do), [hashes/provenance](../results/screenshots/N16_s1_cold/replay.json).
 
 Native export pages: [1](../results/screenshots/N16_s1_cold/native_page_01.png).
 
@@ -68,7 +70,7 @@ Transaction 3 is a store hit in entry 0: VA 0x80000001 → PA 0x200013001. Accep
 
 N=16, seed=1, fixed L=5; primary transaction IDs [3]; visible IDs [2, 3, 4, 5]. Window 210–245 ns; cursor 224.999 ns; anchor event sequence 36.
 
-[Original screenshot](../results/screenshots/N16_s1_hit/screenshot_original.png), [native PS](../results/screenshots/N16_s1_hit/native.ps), [first export page](../results/screenshots/N16_s1_hit/native_rendered.png), [GUI transcript](../results/screenshots/N16_s1_hit/replay.transcript), [exact macro](../results/screenshots/N16_s1_hit/focus.do), [hashes/provenance](../results/screenshots/N16_s1_hit/replay.json).
+[Original screenshot](../results/screenshots/N16_s1_hit/screenshot_original.png), [native PS](../results/screenshots/N16_s1_hit/native.ps), [GUI transcript](../results/screenshots/N16_s1_hit/replay.transcript), [exact macro](../results/screenshots/N16_s1_hit/focus.do), [hashes/provenance](../results/screenshots/N16_s1_hit/replay.json).
 
 Native export pages: [1](../results/screenshots/N16_s1_hit/native_page_01.png).
 
@@ -82,7 +84,7 @@ With all sixteen entries occupied, transaction 29 refills at 3725 ns using PLRU 
 
 N=16, seed=1, fixed L=5; primary transaction IDs [29]; visible IDs [28, 29, 30]. Window 3590–3755 ns; cursor 3724.999 ns; anchor event sequence 560.
 
-[Original screenshot](../results/screenshots/N16_s1_eviction/screenshot_original.png), [native PS](../results/screenshots/N16_s1_eviction/native.ps), [first export page](../results/screenshots/N16_s1_eviction/native_rendered.png), [GUI transcript](../results/screenshots/N16_s1_eviction/replay.transcript), [exact macro](../results/screenshots/N16_s1_eviction/focus.do), [hashes/provenance](../results/screenshots/N16_s1_eviction/replay.json).
+[Original screenshot](../results/screenshots/N16_s1_eviction/screenshot_original.png), [native PS](../results/screenshots/N16_s1_eviction/native.ps), [GUI transcript](../results/screenshots/N16_s1_eviction/replay.transcript), [exact macro](../results/screenshots/N16_s1_eviction/focus.do), [hashes/provenance](../results/screenshots/N16_s1_eviction/replay.json).
 
 Native export pages: [1](../results/screenshots/N16_s1_eviction/native_page_01.png), [2](../results/screenshots/N16_s1_eviction/native_page_02.png).
 
@@ -96,7 +98,7 @@ Transaction 124 reads the valid L1 pointer, then invalid final PTE 0x80004cde at
 
 N=16, seed=1, fixed L=5; primary transaction IDs [124]; visible IDs [124, 125]. Window 14610–14775 ns; cursor 14754.999 ns; anchor event sequence 2349.
 
-[Original screenshot](../results/screenshots/N16_s1_fault/screenshot_original.png), [native PS](../results/screenshots/N16_s1_fault/native.ps), [first export page](../results/screenshots/N16_s1_fault/native_rendered.png), [GUI transcript](../results/screenshots/N16_s1_fault/replay.transcript), [exact macro](../results/screenshots/N16_s1_fault/focus.do), [hashes/provenance](../results/screenshots/N16_s1_fault/replay.json).
+[Original screenshot](../results/screenshots/N16_s1_fault/screenshot_original.png), [native PS](../results/screenshots/N16_s1_fault/native.ps), [GUI transcript](../results/screenshots/N16_s1_fault/replay.transcript), [exact macro](../results/screenshots/N16_s1_fault/focus.do), [hashes/provenance](../results/screenshots/N16_s1_fault/replay.json).
 
 Native export pages: [1](../results/screenshots/N16_s1_fault/native_page_01.png).
 
@@ -110,7 +112,7 @@ At 6835 ns, the observed validity mask changes 0xffff → 0x0000 and PLRU 0x3f4f
 
 N=16, seed=1, fixed L=5; primary transaction IDs []; visible IDs [52, 53]. Window 6815–6870 ns; cursor 6835.001 ns; anchor event sequence 1056.
 
-[Original screenshot](../results/screenshots/N16_s1_full_flush/screenshot_original.png), [native PS](../results/screenshots/N16_s1_full_flush/native.ps), [first export page](../results/screenshots/N16_s1_full_flush/native_rendered.png), [GUI transcript](../results/screenshots/N16_s1_full_flush/replay.transcript), [exact macro](../results/screenshots/N16_s1_full_flush/focus.do), [hashes/provenance](../results/screenshots/N16_s1_full_flush/replay.json).
+[Original screenshot](../results/screenshots/N16_s1_full_flush/screenshot_original.png), [native PS](../results/screenshots/N16_s1_full_flush/native.ps), [GUI transcript](../results/screenshots/N16_s1_full_flush/replay.transcript), [exact macro](../results/screenshots/N16_s1_full_flush/focus.do), [hashes/provenance](../results/screenshots/N16_s1_full_flush/replay.json).
 
 Native export pages: [1](../results/screenshots/N16_s1_full_flush/native_page_01.png).
 
@@ -124,7 +126,7 @@ Transaction 120 has an accepted L1 read, then reset cancels it at 14205 ns. Its 
 
 N=16, seed=1, fixed L=5; primary transaction IDs [120, 121]; visible IDs [119, 120, 121]. Window 14160–14400 ns; cursor 14204.999 ns; anchor event sequence 2261.
 
-[Original screenshot](../results/screenshots/N16_s1_mid_reset/screenshot_original.png), [native PS](../results/screenshots/N16_s1_mid_reset/native.ps), [first export page](../results/screenshots/N16_s1_mid_reset/native_rendered.png), [GUI transcript](../results/screenshots/N16_s1_mid_reset/replay.transcript), [exact macro](../results/screenshots/N16_s1_mid_reset/focus.do), [hashes/provenance](../results/screenshots/N16_s1_mid_reset/replay.json).
+[Original screenshot](../results/screenshots/N16_s1_mid_reset/screenshot_original.png), [native PS](../results/screenshots/N16_s1_mid_reset/native.ps), [GUI transcript](../results/screenshots/N16_s1_mid_reset/replay.transcript), [exact macro](../results/screenshots/N16_s1_mid_reset/focus.do), [hashes/provenance](../results/screenshots/N16_s1_mid_reset/replay.json).
 
 Native export pages: [1](../results/screenshots/N16_s1_mid_reset/native_page_01.png).
 
@@ -138,7 +140,7 @@ Transaction 122 has an accepted L1 read, then flush cancels it at 14425 ns. The 
 
 N=16, seed=1, fixed L=5; primary transaction IDs [122, 123]; visible IDs [121, 122, 123]. Window 14380–14620 ns; cursor 14424.999 ns; anchor event sequence 2299.
 
-[Original screenshot](../results/screenshots/N16_s1_mid_flush/screenshot_original.png), [native PS](../results/screenshots/N16_s1_mid_flush/native.ps), [first export page](../results/screenshots/N16_s1_mid_flush/native_rendered.png), [GUI transcript](../results/screenshots/N16_s1_mid_flush/replay.transcript), [exact macro](../results/screenshots/N16_s1_mid_flush/focus.do), [hashes/provenance](../results/screenshots/N16_s1_mid_flush/replay.json).
+[Original screenshot](../results/screenshots/N16_s1_mid_flush/screenshot_original.png), [native PS](../results/screenshots/N16_s1_mid_flush/native.ps), [GUI transcript](../results/screenshots/N16_s1_mid_flush/replay.transcript), [exact macro](../results/screenshots/N16_s1_mid_flush/focus.do), [hashes/provenance](../results/screenshots/N16_s1_mid_flush/replay.json).
 
 Native export pages: [1](../results/screenshots/N16_s1_mid_flush/native_page_01.png).
 
@@ -152,7 +154,7 @@ The final saved state has completed=1 and failures=0. The separate genuine Trans
 
 N=16, seed=1, fixed L=5; primary transaction IDs []; visible IDs [1319]. Window 161980–162011 ns; cursor 162010 ns; anchor event sequence 26501.
 
-[Original screenshot](../results/screenshots/N16_s1_completion/screenshot_original.png), [native PS](../results/screenshots/N16_s1_completion/native.ps), [first export page](../results/screenshots/N16_s1_completion/native_rendered.png), [GUI transcript](../results/screenshots/N16_s1_completion/replay.transcript), [exact macro](../results/screenshots/N16_s1_completion/focus.do), [hashes/provenance](../results/screenshots/N16_s1_completion/replay.json).
+[Original screenshot](../results/screenshots/N16_s1_completion/screenshot_original.png), [native PS](../results/screenshots/N16_s1_completion/native.ps), [GUI transcript](../results/screenshots/N16_s1_completion/replay.transcript), [exact macro](../results/screenshots/N16_s1_completion/focus.do), [hashes/provenance](../results/screenshots/N16_s1_completion/replay.json).
 
 Native export pages: [1](../results/screenshots/N16_s1_completion/native_page_01.png).
 
