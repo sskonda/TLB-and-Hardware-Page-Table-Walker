@@ -7,6 +7,7 @@ import json
 import os
 from pathlib import Path
 import shutil
+import signal
 import subprocess
 import sys
 
@@ -21,7 +22,7 @@ def tcl_list(items):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--suite", choices=["plru", "translation"], default="plru")
+    parser.add_argument("--suite", choices=["plru", "tlb", "translation", "empty"], default="plru")
     parser.add_argument("--entries", choices=["4", "8", "16", "all"], default="all")
     parser.add_argument("--config", type=Path, help="Private JSON tool command/env overrides")
     parser.add_argument("--out", type=Path)
@@ -29,7 +30,7 @@ def main():
     parser.add_argument("--inputs", type=Path)
     parser.add_argument("--trace", help="Trace name in the input directory; otherwise directed tests")
     parser.add_argument("--variable", action="store_true", help="Separate variable-latency stress")
-    parser.add_argument("--inject", choices=["checker", "coverage", "timeout", "unexpected"])
+    parser.add_argument("--inject", choices=["checker", "coverage", "timeout", "unexpected", "path", "victim", "duplicate", "flush", "unknown", "cookie", "finishbad"])
     parser.add_argument("--watchdog", type=int)
     parser.add_argument("--timeout", type=float, default=180)
     args = parser.parse_args()
@@ -58,29 +59,40 @@ def main():
         record = {"name": name, "command": command, "cwd": str(directory)}
         manifest["steps"].append(record)
         try:
-            result = subprocess.run(command, cwd=directory, env=child_env, stdout=subprocess.PIPE,
-                                    stderr=subprocess.STDOUT, text=True, timeout=args.timeout)
-            record["exit"] = result.returncode
-            (out / (name + ".txt")).write_text(result.stdout)
-            if result.returncode:
-                raise RuntimeError(name + " failed, exit " + str(result.returncode) + "\n" + result.stdout[-4000:])
-            return result.stdout
-        except subprocess.TimeoutExpired as error:
+            process = subprocess.Popen(command, cwd=directory, env=child_env, stdout=subprocess.PIPE,
+                                       stderr=subprocess.STDOUT, text=True, start_new_session=os.name != "nt")
+            try:
+                output, _ = process.communicate(timeout=args.timeout)
+            except subprocess.TimeoutExpired:
+                if os.name == "nt": process.kill()
+                else: os.killpg(process.pid, signal.SIGKILL)
+                output, _ = process.communicate()
+                record["timeout"] = True
+                (out / (name + ".txt")).write_text(output)
+                raise RuntimeError(name + " wall-clock timeout")
+            record["exit"] = process.returncode
+            (out / (name + ".txt")).write_text(output)
+            if process.returncode or "** Error" in output or "** Fatal" in output:
+                raise RuntimeError(name + " failed, exit " + str(process.returncode) + "\n" + output[-4000:])
+            return output
+        except subprocess.TimeoutExpired:
             record["timeout"] = True
-            (out / (name + ".txt")).write_bytes(error.stdout or b"")
-            raise RuntimeError(name + " wall-clock timeout") from error
+            raise RuntimeError(name + " wall-clock timeout")
         finally:
             (out / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
 
     try:
         inputs = None
-        if args.suite == "translation":
+        if args.suite in ["translation", "empty"]:
             inputs = args.inputs.resolve() if args.inputs else out / "inputs"
             if not args.inputs:
                 sys.path.insert(0, str(ROOT / "tools"))
                 from make_inputs import generate
                 generate(inputs)
             manifest["inputs"] = json.loads((inputs / "inputs.json").read_text())
+            for filename, expected_hash in manifest["inputs"]["sha256"].items():
+                if Path(filename).name != filename or hashlib.sha256((inputs / filename).read_bytes()).hexdigest() != expected_hash:
+                    raise RuntimeError("Input hash mismatch: " + filename)
             manifest["trace"] = args.trace
             manifest["variable_latency"] = args.variable
         run("version", programs["vsim"] + ["-version"], out)
@@ -88,25 +100,32 @@ def main():
             {"VM_VLIB": tcl_list(programs["vlib"]), "VM_VLOG": tcl_list(programs["vlog"])})
         for capacity in ([4, 8, 16] if args.entries == "all" else [int(args.entries)]):
             name = args.suite + "_" + str(capacity)
-            top = "plru_tb" if args.suite == "plru" else "translation_tb"
+            top = {"plru": "plru_tb", "tlb": "tlb_tb", "translation": "translation_tb", "empty": "translation_tb"}[args.suite]
             command = programs["vsim"] + ["-c", "-onfinish", "stop", "-voptargs=+acc",
                        "-l", str(out / (name + ".transcript")), "-wlf", str(out / (name + ".wlf")),
                        "-gENTRIES=" + str(capacity), "work." + top, "+SEED=" + str(args.seed)]
             if inputs:
                 command += ["+IMAGE=" + str(inputs / "page_table.mem"), "+LOG=" + str(out / (name + ".jsonl")),
-                            "+RUNID=" + name, "+VARIABLE=" + str(int(args.variable))]
+                            "+RUNID=" + stamp + "_" + name + "_s" + str(args.seed), "+VARIABLE=" + str(int(args.variable)),
+                            "+EMPTY=" + str(int(args.suite == "empty"))]
                 if args.trace: command += ["+TRACE=" + str(inputs / (args.trace + ".trace"))]
             if args.inject: command += ["+INJECT=" + args.inject]
             if args.watchdog: command += ["+WATCHDOG=" + str(args.watchdog)]
             command += ["-do", "do " + tcl_list([ROOT / "sim/batch.do"])]
             output = run(name, command, out, {"VM_TOP": top})
-            sentinel = "PLRU_PASS" if args.suite == "plru" else "TRANSLATION_PASS"
+            sentinel = {"plru": "PLRU_PASS", "tlb": "TLB_PASS", "translation": "TRANSLATION_PASS", "empty": "TRANSLATION_PASS"}[args.suite]
             if sentinel not in output or "RUN_COMPLETE" not in output:
                 raise RuntimeError(name + " missing completion sentinel")
+            if inputs:
+                sys.path.insert(0, str(ROOT / "tools"))
+                from analyze import analyze
+                result = analyze(out / (name + ".jsonl"), inputs / "page_table.mem", capacity,
+                                 args.variable, bool(args.trace), out / name, empty=args.suite == "empty")
+                manifest.setdefault("validated_logs", {})[name] = result["counters"]
             print(name + " PASS", flush=True)
         manifest["passed"] = True
         return 0
-    except (RuntimeError, OSError) as error:
+    except (RuntimeError, OSError, ValueError, KeyError) as error:
         manifest["error"] = str(error)
         print(str(error), file=sys.stderr)
         return 1

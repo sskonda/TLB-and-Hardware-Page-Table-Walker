@@ -1,6 +1,7 @@
 onerror {echo RUN_SCRIPT_ERROR; quit -f -code 21}
 onbreak {
-    if {[examine -radix unsigned /$env(VM_TOP)/completed] == 1} {
+    set stop_reason [runStatus -full]
+    if {[examine -radix unsigned /$env(VM_TOP)/completed] == 1 && [lindex $stop_reason 2] eq {$finish}} {
         resume
     } else {
         echo RUN_INCOMPLETE_BREAK

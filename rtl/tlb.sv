@@ -16,7 +16,7 @@ module tlb #(
     import vm_pkg::*;
     typedef logic [$clog2(ENTRIES)-1:0] index_t;
     typedef struct packed {logic valid; vpn_t vpn; ppn_t ppn; flags_t flags;} entry_t;
-    entry_t entries_q [ENTRIES];
+    entry_t [ENTRIES-1:0] entries_q;
     logic [ENTRIES-1:0] match_vector;
     index_t hit_index, fill_index, victim;
     logic hit_found, fill_found, invalid_found;

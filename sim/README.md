@@ -12,10 +12,11 @@ batch Tcl checks, per-capacity transcripts and WLF, and a JSON manifest containi
 source commit, working-tree status, hashes, commands, and exits. `--out` selects
 a new output path, including paths with spaces. Existing output directories are
 rejected to prevent mixing runs. `--seed` selects the recorded seed; exhaustive
-PLRU tests do not use randomness. More suites will be added with the walker.
+PLRU tests do not use randomness.
 
-The incremental translation suite builds all RTL and exercises the basic memory
-image, refill/hit/replacement, backpressure, flush and cancellation paths:
+The translation suite builds all RTL and checks byte-image translations,
+refill/hit/replacement, both-level malformed PTEs and faults, permission encodings,
+boundary/high-bit addresses, backpressure, cancellation and seeded traffic:
 
 ```sh
 python3 sim/run.py --suite translation --entries all
@@ -23,9 +24,23 @@ python3 sim/run.py --suite translation --entries all
 
 `--variable` selects separate variable-latency stress. `--inputs` accepts an
 existing directory from `python3 tools/make_inputs.py /new/input/directory`.
-Generated performance traces are frozen and hashed before replay; selecting one
-with `--trace sequential` is intended only after the full correctness suite and
-offline checks are ready. Incremental suite PASS is not full coverage closure.
+Generated performance traces are frozen and hashed before replay. Select one
+with `--trace sequential` only after a full correctness regression. Each
+translation PASS includes independent offline log replay and reconciliation.
+
+The complete regression runs all capacities, exhaustive PLRU, standalone TLB
+allocation/flush, empty metrics, three seeds with fixed and variable latency,
+parser mutation tests, actual DUT-output/state corruption, and tool/exit failures:
+
+```sh
+python3 sim/regress.py --config /private/path/modelsim.json
+```
+
+Omit `--config` for a normal PATH installation. `--negative-only` is a focused
+debug option and does not close the full regression. The report explicitly
+records its scope. The core harness and parsers use only Python/Tcl standard
+libraries; no UVM, DPI, SVA, covergroups, class randomization or vendor IP is needed.
+The [event schema](../docs/logs.md) documents the complete observed logs.
 
 ```sh
 python3 sim/run.py --entries 4 --inject checker

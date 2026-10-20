@@ -66,6 +66,7 @@ module plru_tb;
         reset = 0;
         check(dut.state_q === '0 && victim === '0, "reset");
         if (inject == "unexpected") $stop;
+        if (inject == "checker") force dut.victim = {INDEX_WIDTH{1'b1}};
         for (int state_number = 0; state_number < STATE_COUNT; state_number++) begin
             for (int leaf = 0; leaf < ENTRIES; leaf++) begin
                 @(negedge clk);
@@ -74,8 +75,7 @@ module plru_tb;
                 force dut.state_q = preload;
                 #1;
                 if (leaf == 0) begin
-                    check(victim === INDEX_WIDTH'(oracle_victim(preload)) &&
-                          !(inject == "checker" && state_number == 0), "victim");
+                    check(victim === INDEX_WIDTH'(oracle_victim(preload)), "victim");
                     victim_checks++;
                 end
                 release dut.state_q;

@@ -1,6 +1,7 @@
 # Requirements to tests matrix
 
-Status: planned tests, **none executed on a translation design**. Architecture
+Status: implementation and regression matrix; final validation records are
+produced by `sim/regress.py`. Architecture
 choices in [architecture.md](architecture.md) are accepted, including immediate
 combinational hits; course-source review is complete for the relevant material. P denotes an explicit
 chosen contract, R a project/proposal requirement. A row's presence is not test evidence.
@@ -36,6 +37,21 @@ All applicable directed tests run separately at capacities 4, 8, and 16.
 | T26 | R metric reconciliation | Recompute A/H/M/walks/first/consume/stalls independently from observed events; A=C, H+M=A, walks=M only in eligible drained profile; null denominator case |
 | T27 | R automation | Clean ordered build in spaced path, batch/seed/trace options, transcripts/WLF, focused GUI replay; inject compile/elab/runtime/coverage/timeout/unexpected-exit failures |
 | T28 | R evidence | Real ModelSim captures for cold/refill, hit, PLRU eviction, faults, full flush, mid-walk reset/flush recovery and regression completion/counts; verify commit and logs against captures |
+
+The implementation provides separate exhaustive PLRU and standalone TLB benches,
+a procedural translation bench, and an offline byte-image/cache replay. The
+normal full regression selects seeds 1/7/42 at all capacities in fixed and
+variable-latency modes. Directed cancellation-phase and overlap cases explicitly
+hold memory latency at five cycles so each requested phase is reachable;
+randomized variable-latency traffic uses 1-11 cycles and is excluded from
+performance. Random correctness traffic has 1000 requests per seed over
+128 seeded non-identity mappings, with arbitrary offsets/accesses and consumer
+delays. These are verification workloads, not the performance manifest.
+
+Cached U/A faults are unreachable through normal refill because the walker
+rejects those leaves. Cached access-denial and D-clear faults are exercised via
+leaves that allow an initial load or fetch. Successful superpages, privilege
+switching, ASIDs, virtualization and A/D writes are excluded by the architecture.
 
 ## Explicit coverage acceptance
 

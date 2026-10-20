@@ -15,6 +15,7 @@ performance, and simulator evidence are still in progress.
 - [Requirements to tests and mandatory coverage](docs/verification.md)
 - [Source review and review limitations](docs/source-review.md)
 - [ModelSim usage](sim/README.md)
+- [Observed logs and independent reconciliation](docs/logs.md)
 
 Research mirrors, tool probes, private course sources, and temporary working
 material remain outside the repository. Generated simulation libraries and runs
