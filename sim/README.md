@@ -102,3 +102,20 @@ new replay directory. For a reproducible capture add `--capture-x11 --export
 --rasterize`; for manual viewing the GUI remains open until closed. Exact signal
 paths/radices, transaction IDs, time windows, original hashes, and source commit
 are saved in `replay.json`. Config overrides apply to replay as well as batch.
+
+
+Rebuild the four-page course-style paper after archive verification:
+
+```sh
+python3 -m pip install -r requirements-report.txt
+python3 tools/build_report.py evidence results/plots runs/report.pdf
+python3 tools/write_captions.py
+```
+
+Use a separate Python environment for publication dependencies if desired. The
+recorded figures used Matplotlib 3.11.0 and ReportLab 5.0.1. Report building is
+separate from core verification. `write_captions.py` first checks each original
+capture hash and WLF/log provenance; it never edits the original PNG or PS.
+The archive is about 324 MiB because it preserves every canonical observed log,
+its CSV/readable projections, input sets, transcripts and waveform files. Failed
+injection runs retain partial raw logs/WLF and are clearly labeled expected failures.

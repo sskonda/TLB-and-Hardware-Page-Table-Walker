@@ -70,7 +70,7 @@ and coverage totals are exported, and missing mandatory bins fail the run.
   or deposit is released before clocked update checks; no functional test ports.
 - Controller bins: every legal state and transition, including stalls,
   success/fault return, cancel from each state and discard/recovery. The final
-  implementation must publish the exact legal transition list from the agreed FSM.
+  implementation publishes the exact legal transition list below.
 - Conflict bins: all pairs among active memory response, translation response
   consumption, reset, and flush that are reachable; miss start with delayed
   stale response; held-valid attempts while busy. Explain unreachable pairs.
@@ -106,3 +106,46 @@ belong in the reference-review record.
 | CVA5 e72c948 second-level PTE validity | T09/T11 every L0 invalid/error form after valid L1 pointer |
 | tlb-v dca03c2 PLRU inversion | T07 independently defined direction convention and all state/leaf combinations |
 | tlb-v top-level bench limitations | T03-T24 independent monitor/oracles/protocol/fault/log checks, not waveform-only stimulus |
+
+## Executed closure
+
+The committed results and per-run coverage are in [the results record](results.md)
+and [coverage.json](../results/coverage.json). Every one of the 18 translation
+configurations passed its mandatory bins: 79/83/91 explicit bins at 4/8/16 entries,
+including each entry's allocation, hit and victim observations. Standalone PLRU
+separately exhausts every legal bit pattern and every leaf update.
+
+Walker encoding is IDLE=0, ISSUE=1, WAIT_PTE=2, RESULT=3. Legal transition bins
+are 0→0, 0→1, 1→0, 1→1, 1→2, 2→0, 2→1, 2→2, 2→3, 3→0 and 3→3.
+The five remaining pairs are illegal and must have zero observations. Cancellation
+permits the transitions to IDLE from every occupied state. The wrapper encoding
+is IDLE=0, WALK=1, HOLD_HIT=2; its seven legal pairs are 0→0, 0→1, 0→2, 1→0,
+1→1, 2→0 and 2→2. `tools/coverage_report.py` reconstructs those seven pairs and
+self-transition intervals from the observed FSM stream and requires each.
+
+Cancellation phases are: unaccepted L1 request, accepted L1 wait, L1 response
+edge, unaccepted L0 request, accepted L0 wait, L0 response edge, held successful
+walk result, held fault result, and held immediate-hit result. Both reset and
+flush cover every phase at every capacity and seed/memory mode. Directed phase
+placement uses five-cycle latency even in the separate variable-latency suite;
+the seeded random traffic in that suite uses latencies 1–11. Otherwise a short
+random return could make a requested phase unavailable.
+
+Reachable conflicts include reset+flush, each control with a PTE return, each
+control with an offered translation result, a discarded old return plus a new
+PTE-read acceptance, consecutive accepted hits, held request offers while busy,
+and cancellation of unaccepted offers. Controls suppress translation consumption
+by contract. An active PTE response and consumption of that same walk's result
+cannot handshake together: the result is registered for the next edge. A second
+unrelated active translation is excluded by the one-active-request contract.
+Those exclusions are architectural, not disabled checks.
+
+Fault/access goals include memory error, invalid PTE and reserved non-leaf fields
+at both levels for load/store/fetch; unsupported leaves at L1 for all accesses;
+terminal pointer, U denial, access denial and A-clear at L0 for all accesses;
+and D-clear at L0 for stores. D-clear alone is permitted for loads/fetches.
+Permission faults on cached entries still count as hits. Full privilege/SUM/MXR,
+successful superpages, live coherent PTE edits, same-read zero-cycle memory
+returns, cookie reuse while a late response is possible, and unsupported capacity
+values are outside the adopted functional contract. Unsupported capacities are
+required to fail elaboration.

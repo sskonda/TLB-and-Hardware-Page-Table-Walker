@@ -1,0 +1,222 @@
+{
+  "schema": 1,
+  "passed": true,
+  "screenshots_requested": true,
+  "steps": [
+    {
+      "command": [
+        "/home/sanat/anaconda3/bin/python3",
+        "/home/sanat/tlb-work-private/complete clean checkout/sim/regress.py",
+        "--config",
+        "/home/sanat/tlb-work-private/modelsim.json",
+        "--out",
+        "/home/sanat/tlb-work-private/complete clean reproduction/regression"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "/home/sanat/anaconda3/bin/python3",
+        "/home/sanat/tlb-work-private/complete clean checkout/sim/experiments.py",
+        "--config",
+        "/home/sanat/tlb-work-private/modelsim.json",
+        "--regression",
+        "/home/sanat/tlb-work-private/complete clean reproduction/regression/regression.json",
+        "--out",
+        "/home/sanat/tlb-work-private/complete clean reproduction/experiments"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "/home/sanat/anaconda3/bin/python3",
+        "/home/sanat/tlb-work-private/complete clean checkout/tests/check_evidence.py",
+        "/home/sanat/tlb-work-private/complete clean reproduction/regression"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "/home/sanat/anaconda3/bin/python3",
+        "/home/sanat/tlb-work-private/complete clean checkout/tools/evidence.py",
+        "--regression",
+        "/home/sanat/tlb-work-private/complete clean reproduction/regression",
+        "--experiments",
+        "/home/sanat/tlb-work-private/complete clean reproduction/experiments",
+        "--out",
+        "/home/sanat/tlb-work-private/complete clean reproduction/archive"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "/home/sanat/anaconda3/bin/python3",
+        "/home/sanat/tlb-work-private/complete clean checkout/tools/coverage_report.py",
+        "/home/sanat/tlb-work-private/complete clean reproduction/archive/validation",
+        "/home/sanat/tlb-work-private/complete clean reproduction/coverage.json"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "/home/sanat/anaconda3/bin/python3",
+        "/home/sanat/tlb-work-private/complete clean checkout/tools/plot_results.py",
+        "/home/sanat/tlb-work-private/complete clean reproduction/archive/performance/metrics.csv",
+        "/home/sanat/tlb-work-private/complete clean reproduction/plots"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "/home/sanat/anaconda3/bin/python3",
+        "/home/sanat/tlb-work-private/complete clean checkout/sim/replay.py",
+        "/home/sanat/tlb-work-private/complete clean reproduction/archive/validation/fixed_s1",
+        "--config",
+        "/home/sanat/tlb-work-private/modelsim.json",
+        "--entries",
+        "16",
+        "--case",
+        "cold",
+        "--export",
+        "--rasterize",
+        "--capture-x11",
+        "--out",
+        "/home/sanat/tlb-work-private/complete clean reproduction/captures/cold"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "/home/sanat/anaconda3/bin/python3",
+        "/home/sanat/tlb-work-private/complete clean checkout/sim/replay.py",
+        "/home/sanat/tlb-work-private/complete clean reproduction/archive/validation/fixed_s1",
+        "--config",
+        "/home/sanat/tlb-work-private/modelsim.json",
+        "--entries",
+        "16",
+        "--case",
+        "hit",
+        "--export",
+        "--rasterize",
+        "--capture-x11",
+        "--out",
+        "/home/sanat/tlb-work-private/complete clean reproduction/captures/hit"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "/home/sanat/anaconda3/bin/python3",
+        "/home/sanat/tlb-work-private/complete clean checkout/sim/replay.py",
+        "/home/sanat/tlb-work-private/complete clean reproduction/archive/validation/fixed_s1",
+        "--config",
+        "/home/sanat/tlb-work-private/modelsim.json",
+        "--entries",
+        "16",
+        "--case",
+        "eviction",
+        "--export",
+        "--rasterize",
+        "--capture-x11",
+        "--out",
+        "/home/sanat/tlb-work-private/complete clean reproduction/captures/eviction"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "/home/sanat/anaconda3/bin/python3",
+        "/home/sanat/tlb-work-private/complete clean checkout/sim/replay.py",
+        "/home/sanat/tlb-work-private/complete clean reproduction/archive/validation/fixed_s1",
+        "--config",
+        "/home/sanat/tlb-work-private/modelsim.json",
+        "--entries",
+        "16",
+        "--case",
+        "fault",
+        "--export",
+        "--rasterize",
+        "--capture-x11",
+        "--out",
+        "/home/sanat/tlb-work-private/complete clean reproduction/captures/fault"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "/home/sanat/anaconda3/bin/python3",
+        "/home/sanat/tlb-work-private/complete clean checkout/sim/replay.py",
+        "/home/sanat/tlb-work-private/complete clean reproduction/archive/validation/fixed_s1",
+        "--config",
+        "/home/sanat/tlb-work-private/modelsim.json",
+        "--entries",
+        "16",
+        "--case",
+        "full_flush",
+        "--export",
+        "--rasterize",
+        "--capture-x11",
+        "--out",
+        "/home/sanat/tlb-work-private/complete clean reproduction/captures/full_flush"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "/home/sanat/anaconda3/bin/python3",
+        "/home/sanat/tlb-work-private/complete clean checkout/sim/replay.py",
+        "/home/sanat/tlb-work-private/complete clean reproduction/archive/validation/fixed_s1",
+        "--config",
+        "/home/sanat/tlb-work-private/modelsim.json",
+        "--entries",
+        "16",
+        "--case",
+        "mid_reset",
+        "--export",
+        "--rasterize",
+        "--capture-x11",
+        "--out",
+        "/home/sanat/tlb-work-private/complete clean reproduction/captures/mid_reset"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "/home/sanat/anaconda3/bin/python3",
+        "/home/sanat/tlb-work-private/complete clean checkout/sim/replay.py",
+        "/home/sanat/tlb-work-private/complete clean reproduction/archive/validation/fixed_s1",
+        "--config",
+        "/home/sanat/tlb-work-private/modelsim.json",
+        "--entries",
+        "16",
+        "--case",
+        "mid_flush",
+        "--export",
+        "--rasterize",
+        "--capture-x11",
+        "--out",
+        "/home/sanat/tlb-work-private/complete clean reproduction/captures/mid_flush"
+      ],
+      "exit": 0
+    },
+    {
+      "command": [
+        "/home/sanat/anaconda3/bin/python3",
+        "/home/sanat/tlb-work-private/complete clean checkout/sim/replay.py",
+        "/home/sanat/tlb-work-private/complete clean reproduction/archive/validation/fixed_s1",
+        "--config",
+        "/home/sanat/tlb-work-private/modelsim.json",
+        "--entries",
+        "16",
+        "--case",
+        "completion",
+        "--export",
+        "--rasterize",
+        "--capture-x11",
+        "--out",
+        "/home/sanat/tlb-work-private/complete clean reproduction/captures/completion"
+      ],
+      "exit": 0
+    }
+  ]
+}
