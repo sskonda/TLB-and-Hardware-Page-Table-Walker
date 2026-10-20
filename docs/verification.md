@@ -2,7 +2,7 @@
 
 Status: planned tests, **none executed on a translation design**. Architecture
 choices in [architecture.md](architecture.md) are accepted, including immediate
-combinational hits; course-source review remains pending. P denotes an explicit
+combinational hits; course-source review is complete for the relevant material. P denotes an explicit
 chosen contract, R a project/proposal requirement. A row's presence is not test evidence.
 All applicable directed tests run separately at capacities 4, 8, and 16.
 

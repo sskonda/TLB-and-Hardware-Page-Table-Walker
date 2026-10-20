@@ -5,13 +5,15 @@ page table walker, comparing 4, 8, and 16 entries using tree pseudo-LRU.
 ModelSim is the required simulator; Zybo Z7-20 validation is optional.
 
 The architecture and experiment settings have been selected, including
-combinational immediate-hit responses. Implementation is awaiting access to the
-course guidelines, textbook, and lectures so their requirements can be reviewed
-first. There is currently no translation RTL, regression result, measured
-performance, or simulator screenshot in this repository.
+combinational immediate-hit responses. Relevant proposal/course sources have
+been reviewed. Implementation is in progress; the standalone PLRU block and
+exhaustive self-checking test are available. Translation RTL, measured
+performance, and simulator screenshot evidence are still in progress.
 
 - [Architecture and cycle/metric contracts](docs/architecture.md)
 - [Requirements to tests and mandatory coverage](docs/verification.md)
+- [Source review and review limitations](docs/source-review.md)
+- [ModelSim usage](sim/README.md)
 
 Research mirrors, tool probes, private course sources, and temporary working
 material remain outside the repository. Generated simulation libraries and runs

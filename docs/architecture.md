@@ -1,8 +1,8 @@
 # Translation subsystem architecture
 
 Status: architecture and experiment choices accepted on 2026-10-19, with a
-combinational immediate-hit response required. Course-source review remains
-pending. No RTL has been implemented. Values originally marked **P** below are
+combinational immediate-hit response required. Relevant course sources have now
+been reviewed; see [source-review.md](source-review.md). Values marked **P** below are
 explicit project choices accepted with that timing correction, not requirements
 inferred from the course or a claim of complete ISA compliance. The requirements
 matrix is in [verification.md](verification.md).
@@ -22,11 +22,11 @@ protocol stress, reproducible automation, and genuine simulator evidence. CPU/OS
 integration, UVM, prefetch, walker caches, superpages, ASIDs, and virtualization
 are excluded. There is no claim of implementing a complete RISC-V MMU.
 
-The local proposal has been read and visually inspected. The course guidelines,
-textbook, and lectures have not yet been located; their requirements are unknown.
+The local proposal and guidelines have been read. Relevant textbook and lecture
+sections have been reviewed. The guidelines permit justified HDL prototypes.
 Private course documents and research working copies remain outside this repository.
 
-## Decisions and remaining source prerequisite
+## Decisions
 
 1. The address/PTE, permission, and cancellation profile below is accepted.
    The proposal itself does not specify Sv32 or Sv39.
@@ -35,8 +35,8 @@ Private course documents and research working copies remain outside this reposit
    latency. An unconsumed accepted hit is captured in response registers.
 3. The experiment manifest below is accepted, including latency, lengths,
    seeds, working sets, strides, and measurement boundaries.
-4. Locate and read the guidelines and connected course attachments before
-   treating this draft as final. Reconcile any conflict explicitly.
+4. The course-source prerequisite is resolved. No added requirement changes the
+   selected ModelSim platform or bounded standalone scope.
 
 ## Chosen address and PTE profile
 
