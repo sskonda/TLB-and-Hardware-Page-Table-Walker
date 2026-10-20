@@ -74,3 +74,31 @@ compiles correctly. The existing simulator launcher executes the result. No
 vendor binary or system installation was modified. Version checks alone are
 insufficient to establish execution support. Tool probes and their raw transcripts
 are retained outside this repository.
+
+Reproduce the complete matrix and lossless evidence archive with one command:
+
+```sh
+python3 sim/reproduce.py --out "runs/complete reproduction" --config /private/path/modelsim.json --screenshots
+```
+
+The optional `--screenshots` switch runs eight genuine ModelSim GUI WLF replays
+and captures their Wave windows through X11. Completion also captures the
+Transcript window; saved-run counts are explicitly labeled as saved evidence.
+It requires `xwininfo`, ImageMagick `import`, a working display, and Ghostscript.
+Native PostScript waveform exports and their rendered copies are distinct from
+pixel screenshots. No image editing or synthetic simulator views are used.
+Omit the switch on a batch-only host; screenshot reproduction is then excluded.
+Publication plots additionally require Matplotlib; the core simulations and
+archive/log verification use the Python standard library.
+
+```sh
+python3 tools/evidence.py --verify evidence
+python3 sim/replay.py evidence/validation/fixed_s1 --entries 16 --list
+python3 sim/replay.py evidence/validation/fixed_s1 --entries 16 --case mid_flush
+```
+
+Replays accept archived gzip logs/WLF without modifying them. `--out` selects a
+new replay directory. For a reproducible capture add `--capture-x11 --export
+--rasterize`; for manual viewing the GUI remains open until closed. Exact signal
+paths/radices, transaction IDs, time windows, original hashes, and source commit
+are saved in `replay.json`. Config overrides apply to replay as well as batch.
