@@ -7,7 +7,9 @@ onbreak {
         quit -f -code 22
     }
 }
-log -r /*
+log -r /$env(VM_TOP)/dut/*
+log /$env(VM_TOP)/clk /$env(VM_TOP)/reset /$env(VM_TOP)/flush
+log /$env(VM_TOP)/completed /$env(VM_TOP)/failures
 run -all
 if {[examine -radix unsigned /$env(VM_TOP)/completed] != 1} {
     echo RUN_MISSING_COMPLETION

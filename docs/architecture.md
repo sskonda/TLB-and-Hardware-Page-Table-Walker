@@ -152,6 +152,12 @@ uses complete combinational defaults and
 nonblocking register updates. The TLB uses registers for parallel comparison;
 external PTE memory is a verification responder, not an inferred vendor RAM.
 
+The RTL separates this architectural FSMD into a wrapper controller (IDLE,
+WALK, HOLD_HIT) and a walker controller (IDLE, ISSUE, WAIT_PTE, RESULT). A
+backpressured immediate hit uses HOLD_HIT. A walk result remains in the walker
+RESULT state and passes through the wrapper WALK response mux. This split
+preserves the edge timing below without adding another result register stage.
+
 | Current state | Condition | Next state | Edge action |
 | --- | --- | --- | --- |
 | IDLE | no request | IDLE | none |

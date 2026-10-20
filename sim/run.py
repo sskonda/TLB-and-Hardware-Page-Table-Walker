@@ -21,11 +21,14 @@ def tcl_list(items):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--suite", choices=["plru"], default="plru")
+    parser.add_argument("--suite", choices=["plru", "translation"], default="plru")
     parser.add_argument("--entries", choices=["4", "8", "16", "all"], default="all")
     parser.add_argument("--config", type=Path, help="Private JSON tool command/env overrides")
     parser.add_argument("--out", type=Path)
     parser.add_argument("--seed", type=int, default=1)
+    parser.add_argument("--inputs", type=Path)
+    parser.add_argument("--trace", help="Trace name in the input directory; otherwise directed tests")
+    parser.add_argument("--variable", action="store_true", help="Separate variable-latency stress")
     parser.add_argument("--inject", choices=["checker", "coverage", "timeout", "unexpected"])
     parser.add_argument("--watchdog", type=int)
     parser.add_argument("--timeout", type=float, default=180)
@@ -41,7 +44,7 @@ def main():
     stamp = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")
     out = (args.out or ROOT / "runs" / stamp).resolve()
     out.mkdir(parents=True, exist_ok=False)
-    source_files = sorted([*ROOT.glob("rtl/*.sv"), *ROOT.glob("tb/*.sv"), *ROOT.glob("sim/*")])
+    source_files = sorted([*ROOT.glob("rtl/*.sv"), *ROOT.glob("tb/*.sv"), *ROOT.glob("sim/*"), *ROOT.glob("tools/*.py")])
     manifest = {"schema": 1, "suite": args.suite, "entries": args.entries, "seed": args.seed,
                 "injection": args.inject, "started_utc": stamp, "programs": programs,
                 "source_commit": subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip(),
@@ -70,19 +73,35 @@ def main():
             (out / "manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
 
     try:
+        inputs = None
+        if args.suite == "translation":
+            inputs = args.inputs.resolve() if args.inputs else out / "inputs"
+            if not args.inputs:
+                sys.path.insert(0, str(ROOT / "tools"))
+                from make_inputs import generate
+                generate(inputs)
+            manifest["inputs"] = json.loads((inputs / "inputs.json").read_text())
+            manifest["trace"] = args.trace
+            manifest["variable_latency"] = args.variable
         run("version", programs["vsim"] + ["-version"], out)
         run("compile", programs["tclsh"] + [str(ROOT / "sim/compile.tcl")], out,
             {"VM_VLIB": tcl_list(programs["vlib"]), "VM_VLOG": tcl_list(programs["vlog"])})
         for capacity in ([4, 8, 16] if args.entries == "all" else [int(args.entries)]):
             name = args.suite + "_" + str(capacity)
+            top = "plru_tb" if args.suite == "plru" else "translation_tb"
             command = programs["vsim"] + ["-c", "-onfinish", "stop", "-voptargs=+acc",
                        "-l", str(out / (name + ".transcript")), "-wlf", str(out / (name + ".wlf")),
-                       "-gENTRIES=" + str(capacity), "work.plru_tb", "+SEED=" + str(args.seed)]
+                       "-gENTRIES=" + str(capacity), "work." + top, "+SEED=" + str(args.seed)]
+            if inputs:
+                command += ["+IMAGE=" + str(inputs / "page_table.mem"), "+LOG=" + str(out / (name + ".jsonl")),
+                            "+RUNID=" + name, "+VARIABLE=" + str(int(args.variable))]
+                if args.trace: command += ["+TRACE=" + str(inputs / (args.trace + ".trace"))]
             if args.inject: command += ["+INJECT=" + args.inject]
             if args.watchdog: command += ["+WATCHDOG=" + str(args.watchdog)]
             command += ["-do", "do " + tcl_list([ROOT / "sim/batch.do"])]
-            output = run(name, command, out, {"VM_TOP": "plru_tb"})
-            if "PLRU_PASS" not in output or "RUN_COMPLETE" not in output:
+            output = run(name, command, out, {"VM_TOP": top})
+            sentinel = "PLRU_PASS" if args.suite == "plru" else "TRANSLATION_PASS"
+            if sentinel not in output or "RUN_COMPLETE" not in output:
                 raise RuntimeError(name + " missing completion sentinel")
             print(name + " PASS", flush=True)
         manifest["passed"] = True

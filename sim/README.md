@@ -14,6 +14,19 @@ a new output path, including paths with spaces. Existing output directories are
 rejected to prevent mixing runs. `--seed` selects the recorded seed; exhaustive
 PLRU tests do not use randomness. More suites will be added with the walker.
 
+The incremental translation suite builds all RTL and exercises the basic memory
+image, refill/hit/replacement, backpressure, flush and cancellation paths:
+
+```sh
+python3 sim/run.py --suite translation --entries all
+```
+
+`--variable` selects separate variable-latency stress. `--inputs` accepts an
+existing directory from `python3 tools/make_inputs.py /new/input/directory`.
+Generated performance traces are frozen and hashed before replay; selecting one
+with `--trace sequential` is intended only after the full correctness suite and
+offline checks are ready. Incremental suite PASS is not full coverage closure.
+
 ```sh
 python3 sim/run.py --entries 4 --inject checker
 python3 sim/run.py --entries 4 --inject coverage

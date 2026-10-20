@@ -1,5 +1,8 @@
 set root [file normalize [file join [file dirname [info script]] ..]]
-set sources [list [file join $root rtl tree_plru.sv] [file join $root tb plru_tb.sv]]
+set sources [list]
+foreach path {rtl/vm_pkg.sv rtl/tree_plru.sv rtl/tlb.sv rtl/page_table_walker.sv rtl/translation_unit.sv tb/plru_tb.sv tb/translation_tb.sv} {
+    lappend sources [file join $root $path]
+}
 set library_command [expr {[info exists env(VM_VLIB)] ? $env(VM_VLIB) : [list vlib]}]
 set compiler_command [expr {[info exists env(VM_VLOG)] ? $env(VM_VLOG) : [list vlog]}]
 if {[catch {

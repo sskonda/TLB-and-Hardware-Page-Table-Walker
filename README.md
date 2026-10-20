@@ -6,9 +6,10 @@ ModelSim is the required simulator; Zybo Z7-20 validation is optional.
 
 The architecture and experiment settings have been selected, including
 combinational immediate-hit responses. Relevant proposal/course sources have
-been reviewed. Implementation is in progress; the standalone PLRU block and
-exhaustive self-checking test are available. Translation RTL, measured
-performance, and simulator screenshot evidence are still in progress.
+been reviewed. The PLRU, associative TLB, PTE walker, and immediate-hit wrapper
+are implemented. Exhaustive standalone PLRU and incremental translation tests
+are available. Full fault/protocol coverage, offline reconciliation, measured
+performance, and simulator evidence are still in progress.
 
 - [Architecture and cycle/metric contracts](docs/architecture.md)
 - [Requirements to tests and mandatory coverage](docs/verification.md)
