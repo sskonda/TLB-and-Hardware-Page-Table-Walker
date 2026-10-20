@@ -22,7 +22,10 @@ ImageMagick `import -window`. They are actual simulator GUI pixels. No screensho
 was fabricated, redrawn, cropped or annotated. Filenames and this index supply
 labels. Each folder also preserves a distinct native ModelSim PostScript export
 (`native.ps`) and Ghostscript-rendered copy (`native_rendered.png`); those exports
-are not screenshots. All originals were visually inspected at native size.
+are not screenshots. Numbered `native_page_XX.png` files preserve every exported
+page; `native_rendered.png` is a first-page preview. ModelSim's native print format
+can paginate signal rows and elide short bus labels. GUI screenshots and logs
+retain the corresponding values. All originals were visually inspected at native size.
 
 All views replay the passing **fixed-latency directed/random N=16, seed=1** run
 `20261020T044128702411Z_translation_16_s1`, tested source
@@ -44,6 +47,8 @@ unknowns on valid payloads or checked controls fail the regression. The completi
 zoom includes 1 ns beyond the saved endpoint for visibility; no simulation work
 after the saved endpoint is implied. Primary IDs identify the focus; other visible
 transactions are listed separately.
+The driver deliberately changes external request context after acceptance in
+these correctness tests; the walker must continue using its latched VA/context.
 
 To replay all captures from fresh simulations and regenerate observed logs:
 
@@ -83,6 +88,8 @@ interactive replay remains available without those capture utilities.
         text+=f"N=16, seed=1, fixed L=5; primary transaction IDs {record['transactions']}; visible IDs {visible}. "
         text+=f"Window {record['start_ns']}–{record['end_ns']} ns; cursor {record['cursor_ns']} ns; anchor event sequence {record['event_seq']}.\n\n"
         text+=f"[Original screenshot]({relative}screenshot_original.png), [native PS]({relative}native.ps), [rendered export]({relative}native_rendered.png), [GUI transcript]({relative}replay.transcript), [exact macro]({relative}focus.do), [hashes/provenance]({relative}replay.json).\n\n"
+        pages=sorted(directory.glob('native_page_*.png'))
+        if pages:text+='Native export pages: '+', '.join('['+str(i+1)+']('+relative+page.name+')' for i,page in enumerate(pages))+'.\n\n'
         if case=='completion':text+=f"[Original Transcript-window screenshot]({relative}transcript_screenshot_original.png).\n\n"
         text+='```sh\n'+command+'\n```\n\n'
         text+='<details><summary>Exact signal paths and displayed radices</summary>\n\n| Signal | Radix |\n| --- | --- |\n'

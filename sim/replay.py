@@ -185,7 +185,8 @@ def main():
     if args.rasterize:
         if not args.export: raise ValueError('--rasterize requires --export')
         subprocess.run(['gs','-q','-dSAFER','-dBATCH','-dNOPAUSE','-sDEVICE=png16m','-r150',
-                        '-sOutputFile='+str(out/'native_rendered.png'),str(out/'native.ps')],check=True)
+                        '-sOutputFile='+str(out/'native_page_%02d.png'),str(out/'native.ps')],check=True)
+        shutil.copyfile(out/'native_page_01.png',out/'native_rendered.png')
     record['sha256']={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(out.iterdir()) if p.is_file()}
     (out/'replay.json').write_text(json.dumps(record,indent=2)+'\n')
     print('Replay records: '+str(out));return 0
