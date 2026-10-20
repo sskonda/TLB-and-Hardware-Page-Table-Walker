@@ -91,6 +91,8 @@ def main():
         wlf = out/(stem+'.wlf')
         wlf.write_bytes(gzip.decompress((run/(stem+'.wlf.gz')).read_bytes()))
     chosen = cases[args.case]
+    focus_event = next(event for event in events if event['seq']==chosen['event_seq'])
+    chosen['cursor_ns'] = focus_event['time_ns'] + (0.001 if focus_event['phase']=='post' else -0.001)
     prefix = '/translation_tb/dut/'
     signals = [('clk','binary'), ('reset','binary'), ('flush','binary')]
     if args.case == 'full_flush':
@@ -117,7 +119,8 @@ def main():
         label = {'/translation_tb/dut/cache/replacement/state_q':'plru_bits', '/translation_tb/dut/walker/state_q':'walker_state'}.get(path,path.rsplit('/',1)[1])
         commands.append('add wave -label '+tcl_quote(label)+' -radix '+radix+' '+tcl_quote(path))
     commands += ['configure wave -namecolwidth 190', 'configure wave -valuecolwidth 100',
-                 'wave zoom range '+str(chosen['start_ns'])+'ns '+str(chosen['end_ns'])+'ns']
+                 'wave zoom range '+str(chosen['start_ns'])+'ns '+str(chosen['end_ns'])+'ns',
+                 'wave cursor time -time '+str(chosen['cursor_ns'])+'ns 1', 'wave cursor active 1']
     if args.case == 'completion':
         transcript = (run/(stem+'.transcript')).read_text()
         for line in transcript.splitlines():
