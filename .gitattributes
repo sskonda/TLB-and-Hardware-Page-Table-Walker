@@ -1,0 +1,6 @@
+*.sv text eol=lf
+*.py text eol=lf
+*.tcl text eol=lf
+*.do text eol=lf
+/evidence/** -text
+/results/** -text
