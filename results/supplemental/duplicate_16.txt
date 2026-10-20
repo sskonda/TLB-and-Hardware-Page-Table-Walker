@@ -1,0 +1,25 @@
+translation_16 failed, exit 22
+Reading pref.tcl
+
+# 2020.1
+
+# vsim -c -onfinish stop -voptargs="+acc" -l /home/sanat/tlb-work-private/duplicate capacity checks/duplicate_16/translation_16.transcript -wlf /home/sanat/tlb-work-private/duplicate capacity checks/duplicate_16/translation_16.wlf work.translation_tb "+SEED=1" "+IMAGE=/home/sanat/tlb-work-private/duplicate capacity checks/duplicate_16/inputs/page_table.mem" "+LOG=/home/sanat/tlb-work-private/duplicate capacity checks/duplicate_16/translation_16.jsonl" "+RUNID=20261020T155124983191Z_translation_16_s1" "+VARIABLE=0" "+EMPTY=0" "+INJECT=duplicate" -do "do "/home/sanat/tlb-work-private/complete clean checkout/sim/batch.do"" -gENTRIES=16 
+# Start time: 11:51:26 on Oct 20,2026
+# Loading sv_std.std
+# Loading work.vm_pkg
+# Loading work.translation_tb
+# Loading work.translation_unit
+# Loading work.tlb
+# Loading work.tree_plru
+# Loading work.page_table_walker
+# do "/home/sanat/tlb-work-private/complete clean checkout/sim/batch.do"
+# ** Fatal: TRANSLATION_CHECK_FAILED multiple lookup matches N=16 cycle=17 txn=2
+#    Time: 175 ns  Scope: translation_tb.check File: /home/sanat/tlb-work-private/complete clean checkout/tb/translation_tb.sv Line: 187
+# ** Note: $finish    : /home/sanat/tlb-work-private/complete clean checkout/tb/translation_tb.sv(187)
+#    Time: 175 ns  Iteration: 1  Instance: /translation_tb
+# Break in Task check at /home/sanat/tlb-work-private/complete clean checkout/tb/translation_tb.sv line 187
+# RUN_INCOMPLETE_BREAK
+# End time: 11:51:27 on Oct 20,2026, Elapsed time: 0:00:01
+# Errors: 1, Warnings: 0
+
+Run records: /home/sanat/tlb-work-private/duplicate capacity checks/duplicate_16

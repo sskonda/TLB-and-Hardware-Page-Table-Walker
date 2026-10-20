@@ -1,0 +1,22 @@
+Reading pref.tcl
+
+# 2020.1
+
+# vsim -c -onfinish stop -voptargs="+acc" -l /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/fixed_s42/translation_8.transcript -wlf /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/fixed_s42/translation_8.wlf work.translation_tb "+SEED=42" "+IMAGE=/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/fixed_s42/inputs/page_table.mem" "+LOG=/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/fixed_s42/translation_8.jsonl" "+RUNID=20261020T044241032856Z_translation_8_s42" "+VARIABLE=0" "+EMPTY=0" -do "do "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/sim/batch.do"" -gENTRIES=8 
+# Start time: 00:42:47 on Oct 20,2026
+# Loading sv_std.std
+# Loading work.vm_pkg
+# Loading work.translation_tb
+# Loading work.translation_unit
+# Loading work.tlb
+# Loading work.tree_plru
+# Loading work.page_table_walker
+# do "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/sim/batch.do"
+# TRANSLATION_PASS N=8 accepted=1269 completed=1246 canceled=23 checks=766997
+# ** Note: $finish    : /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/tb/translation_tb.sv(859)
+#    Time: 166870 ns  Iteration: 1  Instance: /translation_tb
+# Break in NamedBeginStat stimulus at /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/tb/translation_tb.sv line 859
+# Stopped at /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/tb/translation_tb.sv line 859
+# RUN_COMPLETE
+# End time: 00:42:50 on Oct 20,2026, Elapsed time: 0:00:03
+# Errors: 0, Warnings: 0

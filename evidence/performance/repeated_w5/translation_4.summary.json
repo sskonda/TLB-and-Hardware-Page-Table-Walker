@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "run": "20261020T045700955751Z_translation_4_s1",
+  "capacity": 4,
+  "variable_latency": false,
+  "performance": true,
+  "counters": {
+    "accepted": 8192,
+    "completed": 8192,
+    "canceled": 0,
+    "hits": 1,
+    "misses": 8191,
+    "walks": 8191,
+    "first_results": 8192,
+    "latency_sum": 106483,
+    "consumption_sum": 106483
+  },
+  "coverage_bins": 0,
+  "groups": {
+    "whole": {
+      "accepted": 8192,
+      "completed": 8192,
+      "hits": 1,
+      "misses": 8191,
+      "hit_rate": 0.0001220703125,
+      "miss_rate": 0.9998779296875,
+      "average_latency": 12.9984130859375,
+      "walks": 8191,
+      "stall_cycles": 106483
+    },
+    "cold": {
+      "accepted": 1024,
+      "completed": 1024,
+      "hits": 1,
+      "misses": 1023,
+      "hit_rate": 0.0009765625,
+      "miss_rate": 0.9990234375,
+      "average_latency": 12.9873046875,
+      "walks": 1023,
+      "stall_cycles": 13299
+    },
+    "post_warmup": {
+      "accepted": 7168,
+      "completed": 7168,
+      "hits": 0,
+      "misses": 7168,
+      "hit_rate": 0.0,
+      "miss_rate": 1.0,
+      "average_latency": 13.0,
+      "walks": 7168,
+      "stall_cycles": 93184
+    }
+  }
+}

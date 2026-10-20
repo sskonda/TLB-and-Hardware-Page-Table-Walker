@@ -1,0 +1,19 @@
+# Reading pref.tcl
+# /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/results/screenshots/N16_s1_completion/translation_16.wlf opened as dataset "translation_16"
+# do "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/results/screenshots/N16_s1_completion/focus.do"
+# .main_pane.wave.interior.cs.body.pw.wf
+# 161980 ns
+# 162011 ns
+# 162010 ns
+# 1
+# SAVED_RUN_TRANSCRIPT: # TRANSLATION_PASS N=16 accepted=1317 completed=1294 canceled=23 checks=2193117
+# SAVED_RUN_TRANSCRIPT: # RUN_COMPLETE
+# .main_pane.transcript.interior.cs.body.t
+# OBSERVED_FINISH: accepted=1317  completed=1294  canceled=23
+# OBSERVED_FINISH: hits=172  misses=1145  walks=1145
+# OBSERVED_FINISH: first_results=1298  checks=2193117
+# OBSERVED_FINISH: stall_cycles=14424  queue_cycles=26  walker_busy_cycles=14546
+# SAVED_FULL_REGRESSION: passed=True  scope=full  steps=31  expected_failures=19
+# printing wave to file /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/results/screenshots/N16_s1_completion/native.ps
+# REPLAY_READY
+# after#1057

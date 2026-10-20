@@ -1,0 +1,7 @@
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+Start time: 00:44:04 on Oct 20,2026
+vlog -sv bad.sv 
+-- Compiling module deliberate_compile_failure
+** Error: (vlog-13069) bad.sv(1): near "endmodule": syntax error, unexpected endmodule, expecting ';'.
+End time: 00:44:04 on Oct 20,2026, Elapsed time: 0:00:00
+Errors: 1, Warnings: 0

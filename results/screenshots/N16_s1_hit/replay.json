@@ -1,0 +1,135 @@
+{
+  "schema": 1,
+  "kind": "ModelSim native waveform replay",
+  "case": "hit",
+  "title": "Immediate accepted and consumed hit",
+  "start_ns": 210,
+  "end_ns": 245,
+  "transactions": [
+    3
+  ],
+  "event_seq": 36,
+  "cursor_ns": 224.999,
+  "source_commit": "a1d99ee2c83f29c0ef101bbe72a2f68f06361917",
+  "run_id": "20261020T044128702411Z_translation_16_s1",
+  "entries": 16,
+  "seed": 1,
+  "source_log_sha256": "9006dad1c5d30dd9a2a7efe0a12ce9539176370f46b1bea5a1e541c21871cf41",
+  "source_wlf_sha256": "7f42fed2d2aa1a408554c9ddecc65393380486d81de4586ae1d5d41816ff3416",
+  "signal_radices": [
+    [
+      "/translation_tb/dut/clk",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/reset",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/flush",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/req_valid",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/req_ready",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/req_va",
+      "hexadecimal"
+    ],
+    [
+      "/translation_tb/dut/req_cookie",
+      "unsigned"
+    ],
+    [
+      "/translation_tb/dut/lookup_hit",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/walker/va_q",
+      "hexadecimal"
+    ],
+    [
+      "/translation_tb/dut/walker/state_q",
+      "symbolic"
+    ],
+    [
+      "/translation_tb/dut/walker/level_q",
+      "unsigned"
+    ],
+    [
+      "/translation_tb/dut/mem_req_valid",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/mem_req_ready",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/mem_req_addr",
+      "hexadecimal"
+    ],
+    [
+      "/translation_tb/dut/mem_resp_valid",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/mem_resp_cookie",
+      "unsigned"
+    ],
+    [
+      "/translation_tb/dut/mem_resp_data",
+      "hexadecimal"
+    ],
+    [
+      "/translation_tb/dut/fill_valid",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/resp_valid",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/resp_ready",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/resp_cookie",
+      "unsigned"
+    ],
+    [
+      "/translation_tb/dut/resp_pa",
+      "hexadecimal"
+    ],
+    [
+      "/translation_tb/dut/resp_fault",
+      "symbolic"
+    ]
+  ],
+  "command": [
+    "/home/sanat/.local/bin/vsim",
+    "-gui",
+    "-view",
+    "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/results/screenshots/N16_s1_hit/translation_16.wlf",
+    "-l",
+    "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/results/screenshots/N16_s1_hit/replay.transcript",
+    "-do",
+    "do \"/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/results/screenshots/N16_s1_hit/focus.do\""
+  ],
+  "screenshot_status": "captured",
+  "x11_window": "0x260043c",
+  "exit": 0,
+  "sha256": {
+    "focus.do": "d17a1265e383dca6858d6c85f858f84b0e01f5ec36a1c928b202a574feff7803",
+    "native.ps": "ff0500fa2e2406d4129732ac7a7c70d96b95c6e8231251395cc9ec4e1415e5ff",
+    "native_rendered.png": "d681c09c0b4042b854611981bae9ede1d6c7026d15d86e9e1e194b7d8b364529",
+    "replay.transcript": "7348514ed4a48a39d5648294735e1aff4939dca4ef54189090d176606fcb4a2d",
+    "screenshot_original.png": "25cb866a45edb9a6463211ba56692e3ee6d2f7a75a24d7b16f7d0cdb3acf562f",
+    "stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "translation_16.wlf": "7f42fed2d2aa1a408554c9ddecc65393380486d81de4586ae1d5d41816ff3416"
+  }
+}

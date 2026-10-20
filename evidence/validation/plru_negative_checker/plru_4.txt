@@ -1,0 +1,18 @@
+Reading pref.tcl
+
+# 2020.1
+
+# vsim -c -onfinish stop -voptargs="+acc" -l /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/plru_negative_checker/plru_4.transcript -wlf /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/plru_negative_checker/plru_4.wlf work.plru_tb "+SEED=1" "+INJECT=checker" -do "do "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/sim/batch.do"" -gENTRIES=4 
+# Start time: 00:43:57 on Oct 20,2026
+# Loading sv_std.std
+# Loading work.plru_tb
+# Loading work.tree_plru
+# do "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/sim/batch.do"
+# ** Fatal: PLRU_CHECK_FAILED victim N=4 cycle=3
+#    Time: 31 ns  Scope: plru_tb.check File: /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/tb/plru_tb.sv Line: 52
+# ** Note: $finish    : /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/tb/plru_tb.sv(52)
+#    Time: 31 ns  Iteration: 0  Instance: /plru_tb
+# Break in Task check at /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/tb/plru_tb.sv line 52
+# RUN_INCOMPLETE_BREAK
+# End time: 00:43:57 on Oct 20,2026, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0

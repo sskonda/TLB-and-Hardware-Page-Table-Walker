@@ -1,0 +1,587 @@
+{
+  "schema": 1,
+  "source_commit": "a1d99ee2c83f29c0ef101bbe72a2f68f06361917",
+  "source_sha256": {
+    "rtl/page_table_walker.sv": "e0aa00202833758ac010893b622b701c2ac307337f3bb9ba81d7e1861af3fa8a",
+    "rtl/tlb.sv": "c1261ee9993895c542e9b8d0fef4522331913ebc1b54d966af0973e6b8822dfe",
+    "rtl/translation_unit.sv": "208e2a71a8c343f20cf4104d0cf393031615e578a809c273091d6c8be7a143b5",
+    "rtl/tree_plru.sv": "ab174b2b5756191bbb6cb2a629b5ec9d0f51d567ee0f7eb49aed60ea85967259",
+    "rtl/vm_pkg.sv": "447a492403c54cb09428fc693d68875ed9f8e86f1d5ad97dff408d97f29c4546",
+    "tb/plru_tb.sv": "ed4cc896a5adf84aa2f9870abb35ae2c3c18fa1f99f3baa326c6ab0e48b0801b",
+    "tb/tlb_tb.sv": "ecb79924d23987be9930ea4c320943eed54aa94e58b31f06096dffb5d53021b5",
+    "tb/translation_tb.sv": "c3f84bdb3c58299dfe23d5c5ccdd75d7cad383cc89536bec12923af64c27d164",
+    "sim/README.md": "52a3115e5a4133e39951a3954288d449745d6e143602dcdebf68c46c11b65c31",
+    "sim/batch.do": "95d780b55ba84dd3472225eb18b8a2cbfa2ef7dd0fdbdd9f55a85cb0ee1dce40",
+    "sim/compile.tcl": "6e4a7191d7c8aad5eaa49445be9fe4e1994378cd334a93c06bcc58bd8b64fba8",
+    "sim/regress.py": "f5ffebd96d8f8ed80ea09a5e55f5d8fd4846ceb0fdea865db8f19d039ef1ce5e",
+    "sim/run.py": "b4706c1e5a254dab3a995e398451903ade52e94af55e76b2049c2fbe65fee30b",
+    "tools/analyze.py": "1bdb134ab0cd0fd3396987b0a0bbb3c57b61d5a9abe1dcc59a0da96c91da56b3",
+    "tools/make_inputs.py": "27da48c101cbdfd96caf3e413bfa692a0b6052854f87aff98fe6c97a9544b1f6",
+    "tests/check_logs.py": "3c708ef5a803fe43146c0e3c919713063e27fb4008f44439d6bb823c25eeb20d"
+  },
+  "scope": "full",
+  "steps": [
+    {
+      "name": "plru",
+      "command": [
+        "/home/sanat/anaconda3/bin/python3",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/sim/run.py",
+        "--suite",
+        "plru",
+        "--out",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/plru",
+        "--config",
+        "/home/sanat/tlb-work-private/modelsim.json"
+      ],
+      "exit": 0,
+      "expected_success": true,
+      "reason": null
+    },
+    {
+      "name": "tlb",
+      "command": [
+        "/home/sanat/anaconda3/bin/python3",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/sim/run.py",
+        "--suite",
+        "tlb",
+        "--out",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/tlb",
+        "--config",
+        "/home/sanat/tlb-work-private/modelsim.json"
+      ],
+      "exit": 0,
+      "expected_success": true,
+      "reason": null
+    },
+    {
+      "name": "empty",
+      "command": [
+        "/home/sanat/anaconda3/bin/python3",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/sim/run.py",
+        "--suite",
+        "empty",
+        "--out",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/empty",
+        "--config",
+        "/home/sanat/tlb-work-private/modelsim.json"
+      ],
+      "exit": 0,
+      "expected_success": true,
+      "reason": null
+    },
+    {
+      "name": "fixed_s1",
+      "command": [
+        "/home/sanat/anaconda3/bin/python3",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/sim/run.py",
+        "--suite",
+        "translation",
+        "--out",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/fixed_s1",
+        "--config",
+        "/home/sanat/tlb-work-private/modelsim.json",
+        "--seed",
+        "1"
+      ],
+      "exit": 0,
+      "expected_success": true,
+      "reason": null
+    },
+    {
+      "name": "variable_s1",
+      "command": [
+        "/home/sanat/anaconda3/bin/python3",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/sim/run.py",
+        "--suite",
+        "translation",
+        "--out",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/variable_s1",
+        "--config",
+        "/home/sanat/tlb-work-private/modelsim.json",
+        "--seed",
+        "1",
+        "--variable"
+      ],
+      "exit": 0,
+      "expected_success": true,
+      "reason": null
+    },
+    {
+      "name": "fixed_s7",
+      "command": [
+        "/home/sanat/anaconda3/bin/python3",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/sim/run.py",
+        "--suite",
+        "translation",
+        "--out",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/fixed_s7",
+        "--config",
+        "/home/sanat/tlb-work-private/modelsim.json",
+        "--seed",
+        "7"
+      ],
+      "exit": 0,
+      "expected_success": true,
+      "reason": null
+    },
+    {
+      "name": "variable_s7",
+      "command": [
+        "/home/sanat/anaconda3/bin/python3",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/sim/run.py",
+        "--suite",
+        "translation",
+        "--out",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/variable_s7",
+        "--config",
+        "/home/sanat/tlb-work-private/modelsim.json",
+        "--seed",
+        "7",
+        "--variable"
+      ],
+      "exit": 0,
+      "expected_success": true,
+      "reason": null
+    },
+    {
+      "name": "fixed_s42",
+      "command": [
+        "/home/sanat/anaconda3/bin/python3",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/sim/run.py",
+        "--suite",
+        "translation",
+        "--out",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/fixed_s42",
+        "--config",
+        "/home/sanat/tlb-work-private/modelsim.json",
+        "--seed",
+        "42"
+      ],
+      "exit": 0,
+      "expected_success": true,
+      "reason": null
+    },
+    {
+      "name": "variable_s42",
+      "command": [
+        "/home/sanat/anaconda3/bin/python3",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/sim/run.py",
+        "--suite",
+        "translation",
+        "--out",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/variable_s42",
+        "--config",
+        "/home/sanat/tlb-work-private/modelsim.json",
+        "--seed",
+        "42",
+        "--variable"
+      ],
+      "exit": 0,
+      "expected_success": true,
+      "reason": null
+    },
+    {
+      "name": "parser_fixed_s1",
+      "command": [
+        "/home/sanat/anaconda3/bin/python3",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/tests/check_logs.py",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/fixed_s1/translation_4.jsonl",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/fixed_s1/inputs/page_table.mem",
+        "--entries",
+        "4"
+      ],
+      "exit": 0,
+      "expected_success": true,
+      "reason": "PARSER_PASS"
+    },
+    {
+      "name": "parser_variable_s1",
+      "command": [
+        "/home/sanat/anaconda3/bin/python3",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/tests/check_logs.py",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/variable_s1/translation_4.jsonl",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/variable_s1/inputs/page_table.mem",
+        "--entries",
+        "4",
+        "--variable"
+      ],
+      "exit": 0,
+      "expected_success": true,
+      "reason": "PARSER_PASS"
+    },
+    {
+      "name": "negative_checker",
+      "command": [
+        "/home/sanat/anaconda3/bin/python3",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/sim/run.py",
+        "--suite",
+        "translation",
+        "--out",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/negative_checker",
+        "--config",
+        "/home/sanat/tlb-work-private/modelsim.json",
+        "--entries",
+        "4",
+        "--inject",
+        "checker"
+      ],
+      "exit": 1,
+      "expected_success": false,
+      "reason": "translation response"
+    },
+    {
+      "name": "negative_path",
+      "command": [
+        "/home/sanat/anaconda3/bin/python3",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/sim/run.py",
+        "--suite",
+        "translation",
+        "--out",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/negative_path",
+        "--config",
+        "/home/sanat/tlb-work-private/modelsim.json",
+        "--entries",
+        "4",
+        "--inject",
+        "path"
+      ],
+      "exit": 1,
+      "expected_success": false,
+      "reason": "PTE presentation path"
+    },
+    {
+      "name": "negative_victim",
+      "command": [
+        "/home/sanat/anaconda3/bin/python3",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/sim/run.py",
+        "--suite",
+        "translation",
+        "--out",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/negative_victim",
+        "--config",
+        "/home/sanat/tlb-work-private/modelsim.json",
+        "--entries",
+        "4",
+        "--inject",
+        "victim"
+      ],
+      "exit": 1,
+      "expected_success": false,
+      "reason": "refill victim"
+    },
+    {
+      "name": "negative_duplicate",
+      "command": [
+        "/home/sanat/anaconda3/bin/python3",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/sim/run.py",
+        "--suite",
+        "translation",
+        "--out",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/negative_duplicate",
+        "--config",
+        "/home/sanat/tlb-work-private/modelsim.json",
+        "--entries",
+        "4",
+        "--inject",
+        "duplicate"
+      ],
+      "exit": 1,
+      "expected_success": false,
+      "reason": "multiple lookup matches"
+    },
+    {
+      "name": "negative_flush",
+      "command": [
+        "/home/sanat/anaconda3/bin/python3",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/sim/run.py",
+        "--suite",
+        "translation",
+        "--out",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/negative_flush",
+        "--config",
+        "/home/sanat/tlb-work-private/modelsim.json",
+        "--entries",
+        "16",
+        "--inject",
+        "flush"
+      ],
+      "exit": 1,
+      "expected_success": false,
+      "reason": "entry validity"
+    },
+    {
+      "name": "negative_unknown",
+      "command": [
+        "/home/sanat/anaconda3/bin/python3",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/sim/run.py",
+        "--suite",
+        "translation",
+        "--out",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/negative_unknown",
+        "--config",
+        "/home/sanat/tlb-work-private/modelsim.json",
+        "--entries",
+        "4",
+        "--inject",
+        "unknown"
+      ],
+      "exit": 1,
+      "expected_success": false,
+      "reason": "known translation payload"
+    },
+    {
+      "name": "negative_cookie",
+      "command": [
+        "/home/sanat/anaconda3/bin/python3",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/sim/run.py",
+        "--suite",
+        "translation",
+        "--out",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/negative_cookie",
+        "--config",
+        "/home/sanat/tlb-work-private/modelsim.json",
+        "--entries",
+        "4",
+        "--inject",
+        "cookie"
+      ],
+      "exit": 1,
+      "expected_success": false,
+      "reason": "translation response"
+    },
+    {
+      "name": "negative_coverage",
+      "command": [
+        "/home/sanat/anaconda3/bin/python3",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/sim/run.py",
+        "--suite",
+        "translation",
+        "--out",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/negative_coverage",
+        "--config",
+        "/home/sanat/tlb-work-private/modelsim.json",
+        "--entries",
+        "4",
+        "--inject",
+        "coverage"
+      ],
+      "exit": 1,
+      "expected_success": false,
+      "reason": "cancel coverage"
+    },
+    {
+      "name": "negative_timeout",
+      "command": [
+        "/home/sanat/anaconda3/bin/python3",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/sim/run.py",
+        "--suite",
+        "translation",
+        "--out",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/negative_timeout",
+        "--config",
+        "/home/sanat/tlb-work-private/modelsim.json",
+        "--entries",
+        "4",
+        "--inject",
+        "timeout",
+        "--watchdog",
+        "32"
+      ],
+      "exit": 1,
+      "expected_success": false,
+      "reason": "TRANSLATION_WATCHDOG"
+    },
+    {
+      "name": "negative_unexpected",
+      "command": [
+        "/home/sanat/anaconda3/bin/python3",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/sim/run.py",
+        "--suite",
+        "translation",
+        "--out",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/negative_unexpected",
+        "--config",
+        "/home/sanat/tlb-work-private/modelsim.json",
+        "--entries",
+        "4",
+        "--inject",
+        "unexpected"
+      ],
+      "exit": 1,
+      "expected_success": false,
+      "reason": "RUN_INCOMPLETE_BREAK"
+    },
+    {
+      "name": "negative_finishbad",
+      "command": [
+        "/home/sanat/anaconda3/bin/python3",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/sim/run.py",
+        "--suite",
+        "translation",
+        "--out",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/negative_finishbad",
+        "--config",
+        "/home/sanat/tlb-work-private/modelsim.json",
+        "--entries",
+        "4",
+        "--inject",
+        "finishbad"
+      ],
+      "exit": 1,
+      "expected_success": false,
+      "reason": "RUN_INCOMPLETE_BREAK"
+    },
+    {
+      "name": "plru_negative_checker",
+      "command": [
+        "/home/sanat/anaconda3/bin/python3",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/sim/run.py",
+        "--suite",
+        "plru",
+        "--out",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/plru_negative_checker",
+        "--config",
+        "/home/sanat/tlb-work-private/modelsim.json",
+        "--entries",
+        "4",
+        "--inject",
+        "checker"
+      ],
+      "exit": 1,
+      "expected_success": false,
+      "reason": "PLRU_CHECK_FAILED victim"
+    },
+    {
+      "name": "plru_negative_coverage",
+      "command": [
+        "/home/sanat/anaconda3/bin/python3",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/sim/run.py",
+        "--suite",
+        "plru",
+        "--out",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/plru_negative_coverage",
+        "--config",
+        "/home/sanat/tlb-work-private/modelsim.json",
+        "--entries",
+        "4",
+        "--inject",
+        "coverage"
+      ],
+      "exit": 1,
+      "expected_success": false,
+      "reason": "PLRU_CHECK_FAILED coverage"
+    },
+    {
+      "name": "plru_negative_timeout",
+      "command": [
+        "/home/sanat/anaconda3/bin/python3",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/sim/run.py",
+        "--suite",
+        "plru",
+        "--out",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/plru_negative_timeout",
+        "--config",
+        "/home/sanat/tlb-work-private/modelsim.json",
+        "--entries",
+        "4",
+        "--inject",
+        "timeout",
+        "--watchdog",
+        "32"
+      ],
+      "exit": 1,
+      "expected_success": false,
+      "reason": "PLRU_WATCHDOG"
+    },
+    {
+      "name": "plru_negative_unexpected",
+      "command": [
+        "/home/sanat/anaconda3/bin/python3",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/sim/run.py",
+        "--suite",
+        "plru",
+        "--out",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/plru_negative_unexpected",
+        "--config",
+        "/home/sanat/tlb-work-private/modelsim.json",
+        "--entries",
+        "4",
+        "--inject",
+        "unexpected"
+      ],
+      "exit": 1,
+      "expected_success": false,
+      "reason": "RUN_INCOMPLETE_BREAK"
+    },
+    {
+      "name": "missing_design",
+      "command": [
+        "/home/sanat/.local/bin/vsim",
+        "-c",
+        "work.missing_expected_design",
+        "-do",
+        "quit -f -code 31"
+      ],
+      "exit": 12,
+      "expected_success": false,
+      "reason": "Error loading design"
+    },
+    {
+      "name": "invalid_capacity",
+      "command": [
+        "/home/sanat/.local/bin/vsim",
+        "-c",
+        "-gENTRIES=3",
+        "work.plru_tb",
+        "-do",
+        "quit -f -code 31"
+      ],
+      "exit": 12,
+      "expected_success": false,
+      "reason": "UNSUPPORTED_TLB_CAPACITY"
+    },
+    {
+      "name": "negative_library",
+      "command": [
+        "/home/sanat/.local/bin/vlib",
+        "work"
+      ],
+      "exit": 0,
+      "expected_success": true,
+      "reason": null
+    },
+    {
+      "name": "negative_compile",
+      "command": [
+        "/home/sanat/intelFPGA/20.1/modelsim_compat/usr/lib/i386-linux-gnu/ld-linux.so.2",
+        "/home/sanat/intelFPGA/20.1/modelsim_ase/linuxaloem/vlog",
+        "-sv",
+        "bad.sv"
+      ],
+      "exit": 2,
+      "expected_success": false,
+      "reason": "** Error"
+    },
+    {
+      "name": "wall_timeout",
+      "command": [
+        "/home/sanat/anaconda3/bin/python3",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/sim/run.py",
+        "--suite",
+        "empty",
+        "--out",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/wall_timeout",
+        "--config",
+        "/home/sanat/tlb-work-private/modelsim.json",
+        "--entries",
+        "4",
+        "--timeout",
+        "0.001"
+      ],
+      "exit": 1,
+      "expected_success": false,
+      "reason": "wall-clock timeout"
+    }
+  ],
+  "passed": true
+}

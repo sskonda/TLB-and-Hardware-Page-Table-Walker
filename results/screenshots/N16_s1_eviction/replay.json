@@ -1,0 +1,151 @@
+{
+  "schema": 1,
+  "kind": "ModelSim native waveform replay",
+  "case": "eviction",
+  "title": "Full TLB tree-PLRU eviction",
+  "start_ns": 3590,
+  "end_ns": 3755,
+  "transactions": [
+    29
+  ],
+  "event_seq": 560,
+  "cursor_ns": 3724.999,
+  "source_commit": "a1d99ee2c83f29c0ef101bbe72a2f68f06361917",
+  "run_id": "20261020T044128702411Z_translation_16_s1",
+  "entries": 16,
+  "seed": 1,
+  "source_log_sha256": "9006dad1c5d30dd9a2a7efe0a12ce9539176370f46b1bea5a1e541c21871cf41",
+  "source_wlf_sha256": "7f42fed2d2aa1a408554c9ddecc65393380486d81de4586ae1d5d41816ff3416",
+  "signal_radices": [
+    [
+      "/translation_tb/dut/clk",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/reset",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/flush",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/req_valid",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/req_ready",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/req_va",
+      "hexadecimal"
+    ],
+    [
+      "/translation_tb/dut/req_cookie",
+      "unsigned"
+    ],
+    [
+      "/translation_tb/dut/lookup_hit",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/walker/va_q",
+      "hexadecimal"
+    ],
+    [
+      "/translation_tb/dut/walker/state_q",
+      "symbolic"
+    ],
+    [
+      "/translation_tb/dut/walker/level_q",
+      "unsigned"
+    ],
+    [
+      "/translation_tb/dut/mem_req_valid",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/mem_req_ready",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/mem_req_addr",
+      "hexadecimal"
+    ],
+    [
+      "/translation_tb/dut/mem_resp_valid",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/mem_resp_cookie",
+      "unsigned"
+    ],
+    [
+      "/translation_tb/dut/mem_resp_data",
+      "hexadecimal"
+    ],
+    [
+      "/translation_tb/dut/fill_valid",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/cache/fill_index",
+      "unsigned"
+    ],
+    [
+      "/translation_tb/dut/cache/victim",
+      "unsigned"
+    ],
+    [
+      "/translation_tb/dut/fill_vpn",
+      "hexadecimal"
+    ],
+    [
+      "/translation_tb/dut/cache/replacement/state_q",
+      "hexadecimal"
+    ],
+    [
+      "/translation_tb/dut/resp_valid",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/resp_ready",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/resp_cookie",
+      "unsigned"
+    ],
+    [
+      "/translation_tb/dut/resp_pa",
+      "hexadecimal"
+    ],
+    [
+      "/translation_tb/dut/resp_fault",
+      "symbolic"
+    ]
+  ],
+  "command": [
+    "/home/sanat/.local/bin/vsim",
+    "-gui",
+    "-view",
+    "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/results/screenshots/N16_s1_eviction/translation_16.wlf",
+    "-l",
+    "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/results/screenshots/N16_s1_eviction/replay.transcript",
+    "-do",
+    "do \"/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/results/screenshots/N16_s1_eviction/focus.do\""
+  ],
+  "screenshot_status": "captured",
+  "x11_window": "0x260043c",
+  "exit": 0,
+  "sha256": {
+    "focus.do": "e90fa990115a4c33e6201f10a14d40d258a5a36c6075da919111ae42632f168e",
+    "native.ps": "5464111dff92f6f39d476ad60390edabe40f0b0fa78b283754cba3b172b10b4b",
+    "native_rendered.png": "78e7b9fcad1596da1878b496c8ccbaed945740d8874b4c17fee07835c86a9c93",
+    "replay.transcript": "79a64acc4dc0d05f3f0a46bd6cf0debfa31265e85167c2b30f2be30b98512f06",
+    "screenshot_original.png": "23dd56c0e66b5fa4029ef352ddd766faf1631ad2b5984c9c1a94bdf1002f7647",
+    "stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "translation_16.wlf": "7f42fed2d2aa1a408554c9ddecc65393380486d81de4586ae1d5d41816ff3416"
+  }
+}

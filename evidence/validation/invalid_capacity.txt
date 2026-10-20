@@ -1,0 +1,17 @@
+Reading pref.tcl
+
+# 2020.1
+
+# vsim -c work.plru_tb -do "quit -f -code 31" -gENTRIES=3 
+# Start time: 00:44:03 on Oct 20,2026
+# Loading sv_std.std
+# Loading work.plru_tb
+# Loading work.tree_plru
+# ** Error: (vsim-3033) Instantiation of 'UNSUPPORTED_TLB_CAPACITY' failed. The design unit was not found.
+#    Time: 0 ps  Iteration: 0  Region: /plru_tb/dut/invalid_capacity File: /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/rtl/tree_plru.sv Line: 17
+#         Searched libraries:
+#             /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/plru/work
+# Error loading design
+Error loading design
+# End time: 00:44:03 on Oct 20,2026, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0

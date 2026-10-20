@@ -1,0 +1,14 @@
+# vsim -c -onfinish stop -voptargs="+acc" -l /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/plru/plru_8.transcript -wlf /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/plru/plru_8.wlf work.plru_tb "+SEED=1" -do "do "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/sim/batch.do"" -gENTRIES=8 
+# Start time: 00:41:10 on Oct 20,2026
+# Loading sv_std.std
+# Loading work.plru_tb
+# Loading work.tree_plru
+# do "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/sim/batch.do"
+# PLRU_PASS N=8 states=128 updates=1024
+# ** Note: $finish    : /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/tb/plru_tb.sv(109)
+#    Time: 10320 ns  Iteration: 1  Instance: /plru_tb
+# Break in Module plru_tb at /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/tb/plru_tb.sv line 109
+# Stopped at /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/tb/plru_tb.sv line 109
+# RUN_COMPLETE
+# End time: 00:41:11 on Oct 20,2026, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0

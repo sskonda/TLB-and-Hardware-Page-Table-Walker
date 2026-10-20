@@ -1,0 +1,136 @@
+{
+  "schema": 1,
+  "kind": "ModelSim native waveform replay",
+  "case": "mid_reset",
+  "title": "Mid-walk reset, late discard and recovery",
+  "start_ns": 14160,
+  "end_ns": 14400,
+  "transactions": [
+    120,
+    121
+  ],
+  "event_seq": 2261,
+  "cursor_ns": 14204.999,
+  "source_commit": "a1d99ee2c83f29c0ef101bbe72a2f68f06361917",
+  "run_id": "20261020T044128702411Z_translation_16_s1",
+  "entries": 16,
+  "seed": 1,
+  "source_log_sha256": "9006dad1c5d30dd9a2a7efe0a12ce9539176370f46b1bea5a1e541c21871cf41",
+  "source_wlf_sha256": "7f42fed2d2aa1a408554c9ddecc65393380486d81de4586ae1d5d41816ff3416",
+  "signal_radices": [
+    [
+      "/translation_tb/dut/clk",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/reset",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/flush",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/req_valid",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/req_ready",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/req_va",
+      "hexadecimal"
+    ],
+    [
+      "/translation_tb/dut/req_cookie",
+      "unsigned"
+    ],
+    [
+      "/translation_tb/dut/lookup_hit",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/walker/va_q",
+      "hexadecimal"
+    ],
+    [
+      "/translation_tb/dut/walker/state_q",
+      "symbolic"
+    ],
+    [
+      "/translation_tb/dut/walker/level_q",
+      "unsigned"
+    ],
+    [
+      "/translation_tb/dut/mem_req_valid",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/mem_req_ready",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/mem_req_addr",
+      "hexadecimal"
+    ],
+    [
+      "/translation_tb/dut/mem_resp_valid",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/mem_resp_cookie",
+      "unsigned"
+    ],
+    [
+      "/translation_tb/dut/mem_resp_data",
+      "hexadecimal"
+    ],
+    [
+      "/translation_tb/dut/fill_valid",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/resp_valid",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/resp_ready",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/resp_cookie",
+      "unsigned"
+    ],
+    [
+      "/translation_tb/dut/resp_pa",
+      "hexadecimal"
+    ],
+    [
+      "/translation_tb/dut/resp_fault",
+      "symbolic"
+    ]
+  ],
+  "command": [
+    "/home/sanat/.local/bin/vsim",
+    "-gui",
+    "-view",
+    "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/results/screenshots/N16_s1_mid_reset/translation_16.wlf",
+    "-l",
+    "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/results/screenshots/N16_s1_mid_reset/replay.transcript",
+    "-do",
+    "do \"/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/results/screenshots/N16_s1_mid_reset/focus.do\""
+  ],
+  "screenshot_status": "captured",
+  "x11_window": "0x260043c",
+  "exit": 0,
+  "sha256": {
+    "focus.do": "2086a2c360ef376fc783e2e9587d209d9f72f4338ca87036e97917de8b0584c6",
+    "native.ps": "fc8b31d293aaca130a7ba8133d4a8151b835afb969f67882ca641af3f585acf8",
+    "native_rendered.png": "e8582d3f13fecad351668fa782c9f248c32874af73fd9ffd18a033e0142af453",
+    "replay.transcript": "4d4b0ab88415b8874d49e19eb82decaa119d69a259934113031618c7c9049ab4",
+    "screenshot_original.png": "9c7828129f6e291713e7296c262b6aadb72143d965a47a3cbdce8e0e8464c78e",
+    "stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "translation_16.wlf": "7f42fed2d2aa1a408554c9ddecc65393380486d81de4586ae1d5d41816ff3416"
+  }
+}

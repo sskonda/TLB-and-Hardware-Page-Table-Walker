@@ -1,0 +1,19 @@
+{
+  "schema": 1,
+  "passed": true,
+  "source_commit": "519062811f0ead885d63d970472e621d4576663e",
+  "steps": [
+    {
+      "capacity": 8,
+      "expected_success": false,
+      "exit": 1,
+      "reason": "multiple lookup matches"
+    },
+    {
+      "capacity": 16,
+      "expected_success": false,
+      "exit": 1,
+      "reason": "multiple lookup matches"
+    }
+  ]
+}

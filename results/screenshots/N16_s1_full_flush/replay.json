@@ -1,0 +1,133 @@
+{
+  "schema": 1,
+  "kind": "ModelSim native waveform replay",
+  "case": "full_flush",
+  "title": "All populated entries cleared",
+  "start_ns": 6815,
+  "end_ns": 6870,
+  "transactions": [],
+  "event_seq": 1056,
+  "cursor_ns": 6835.001,
+  "source_commit": "a1d99ee2c83f29c0ef101bbe72a2f68f06361917",
+  "run_id": "20261020T044128702411Z_translation_16_s1",
+  "entries": 16,
+  "seed": 1,
+  "source_log_sha256": "9006dad1c5d30dd9a2a7efe0a12ce9539176370f46b1bea5a1e541c21871cf41",
+  "source_wlf_sha256": "7f42fed2d2aa1a408554c9ddecc65393380486d81de4586ae1d5d41816ff3416",
+  "signal_radices": [
+    [
+      "/translation_tb/dut/clk",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/reset",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/flush",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/cache/entries_q[0].valid",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/cache/entries_q[1].valid",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/cache/entries_q[2].valid",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/cache/entries_q[3].valid",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/cache/entries_q[4].valid",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/cache/entries_q[5].valid",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/cache/entries_q[6].valid",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/cache/entries_q[7].valid",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/cache/entries_q[8].valid",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/cache/entries_q[9].valid",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/cache/entries_q[10].valid",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/cache/entries_q[11].valid",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/cache/entries_q[12].valid",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/cache/entries_q[13].valid",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/cache/entries_q[14].valid",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/cache/entries_q[15].valid",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/cache/replacement/state_q",
+      "hexadecimal"
+    ],
+    [
+      "/translation_tb/dut/req_valid",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/req_ready",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/resp_valid",
+      "binary"
+    ]
+  ],
+  "command": [
+    "/home/sanat/.local/bin/vsim",
+    "-gui",
+    "-view",
+    "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/results/screenshots/N16_s1_full_flush/translation_16.wlf",
+    "-l",
+    "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/results/screenshots/N16_s1_full_flush/replay.transcript",
+    "-do",
+    "do \"/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/results/screenshots/N16_s1_full_flush/focus.do\""
+  ],
+  "screenshot_status": "captured",
+  "x11_window": "0x260043c",
+  "exit": 0,
+  "sha256": {
+    "focus.do": "94e80235037b491ba57c7a761a175a0d0fc20889f56cf7e474c43980836649a9",
+    "native.ps": "a3cb3716489f9248573916d80d8d67c03f19e517a72b169298d283fbc4bca24b",
+    "native_rendered.png": "f17f69b961e9a59a4a38c7fb98de60de0a40d512d5db4f1ddff1d10bf61c7d3c",
+    "replay.transcript": "cfb300fa869d9cf92f62457df5c8d16128a45f3ce168d20445f1c50f2442319e",
+    "screenshot_original.png": "c6b051354b9be9f7e79247baccbb2cf7003a764f01d0e69b406a5e0fcc188eac",
+    "stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "translation_16.wlf": "7f42fed2d2aa1a408554c9ddecc65393380486d81de4586ae1d5d41816ff3416"
+  }
+}

@@ -1,0 +1,18 @@
+# vsim -c -onfinish stop -voptargs="+acc" -l /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/variable_s7/translation_4.transcript -wlf /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/variable_s7/translation_4.wlf work.translation_tb "+SEED=7" "+IMAGE=/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/variable_s7/inputs/page_table.mem" "+LOG=/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/variable_s7/translation_4.jsonl" "+RUNID=20261020T044222935585Z_translation_4_s7" "+VARIABLE=1" "+EMPTY=0" -do "do "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/sim/batch.do"" -gENTRIES=4 
+# Start time: 00:42:23 on Oct 20,2026
+# Loading sv_std.std
+# Loading work.vm_pkg
+# Loading work.translation_tb
+# Loading work.translation_unit
+# Loading work.tlb
+# Loading work.tree_plru
+# Loading work.page_table_walker
+# do "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/sim/batch.do"
+# TRANSLATION_PASS N=4 accepted=1245 completed=1222 canceled=23 checks=376821
+# ** Note: $finish    : /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/tb/translation_tb.sv(859)
+#    Time: 188270 ns  Iteration: 1  Instance: /translation_tb
+# Break in NamedBeginStat stimulus at /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/tb/translation_tb.sv line 859
+# Stopped at /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/tb/translation_tb.sv line 859
+# RUN_COMPLETE
+# End time: 00:42:27 on Oct 20,2026, Elapsed time: 0:00:04
+# Errors: 0, Warnings: 0

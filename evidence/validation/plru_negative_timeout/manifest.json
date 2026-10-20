@@ -1,0 +1,87 @@
+{
+  "schema": 1,
+  "suite": "plru",
+  "entries": "4",
+  "seed": 1,
+  "injection": "timeout",
+  "started_utc": "20261020T044358997795Z",
+  "programs": {
+    "vlib": [
+      "/home/sanat/.local/bin/vlib"
+    ],
+    "vlog": [
+      "/home/sanat/intelFPGA/20.1/modelsim_compat/usr/lib/i386-linux-gnu/ld-linux.so.2",
+      "/home/sanat/intelFPGA/20.1/modelsim_ase/linuxaloem/vlog"
+    ],
+    "vsim": [
+      "/home/sanat/.local/bin/vsim"
+    ],
+    "tclsh": [
+      "/home/sanat/anaconda3/bin/tclsh"
+    ]
+  },
+  "source_commit": "a1d99ee2c83f29c0ef101bbe72a2f68f06361917",
+  "working_tree": "",
+  "input_sha256": {
+    "rtl/page_table_walker.sv": "e0aa00202833758ac010893b622b701c2ac307337f3bb9ba81d7e1861af3fa8a",
+    "rtl/tlb.sv": "c1261ee9993895c542e9b8d0fef4522331913ebc1b54d966af0973e6b8822dfe",
+    "rtl/translation_unit.sv": "208e2a71a8c343f20cf4104d0cf393031615e578a809c273091d6c8be7a143b5",
+    "rtl/tree_plru.sv": "ab174b2b5756191bbb6cb2a629b5ec9d0f51d567ee0f7eb49aed60ea85967259",
+    "rtl/vm_pkg.sv": "447a492403c54cb09428fc693d68875ed9f8e86f1d5ad97dff408d97f29c4546",
+    "sim/README.md": "52a3115e5a4133e39951a3954288d449745d6e143602dcdebf68c46c11b65c31",
+    "sim/batch.do": "95d780b55ba84dd3472225eb18b8a2cbfa2ef7dd0fdbdd9f55a85cb0ee1dce40",
+    "sim/compile.tcl": "6e4a7191d7c8aad5eaa49445be9fe4e1994378cd334a93c06bcc58bd8b64fba8",
+    "sim/regress.py": "f5ffebd96d8f8ed80ea09a5e55f5d8fd4846ceb0fdea865db8f19d039ef1ce5e",
+    "sim/run.py": "b4706c1e5a254dab3a995e398451903ade52e94af55e76b2049c2fbe65fee30b",
+    "tb/plru_tb.sv": "ed4cc896a5adf84aa2f9870abb35ae2c3c18fa1f99f3baa326c6ab0e48b0801b",
+    "tb/tlb_tb.sv": "ecb79924d23987be9930ea4c320943eed54aa94e58b31f06096dffb5d53021b5",
+    "tb/translation_tb.sv": "c3f84bdb3c58299dfe23d5c5ccdd75d7cad383cc89536bec12923af64c27d164",
+    "tools/analyze.py": "1bdb134ab0cd0fd3396987b0a0bbb3c57b61d5a9abe1dcc59a0da96c91da56b3",
+    "tools/make_inputs.py": "27da48c101cbdfd96caf3e413bfa692a0b6052854f87aff98fe6c97a9544b1f6"
+  },
+  "steps": [
+    {
+      "name": "version",
+      "command": [
+        "/home/sanat/.local/bin/vsim",
+        "-version"
+      ],
+      "cwd": "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/plru_negative_timeout",
+      "exit": 0
+    },
+    {
+      "name": "compile",
+      "command": [
+        "/home/sanat/anaconda3/bin/tclsh",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/sim/compile.tcl"
+      ],
+      "cwd": "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/plru_negative_timeout",
+      "exit": 0
+    },
+    {
+      "name": "plru_4",
+      "command": [
+        "/home/sanat/.local/bin/vsim",
+        "-c",
+        "-onfinish",
+        "stop",
+        "-voptargs=+acc",
+        "-l",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/plru_negative_timeout/plru_4.transcript",
+        "-wlf",
+        "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/plru_negative_timeout/plru_4.wlf",
+        "-gENTRIES=4",
+        "work.plru_tb",
+        "+SEED=1",
+        "+INJECT=timeout",
+        "+WATCHDOG=32",
+        "-do",
+        "do \"/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/sim/batch.do\""
+      ],
+      "cwd": "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/plru_negative_timeout",
+      "exit": 22
+    }
+  ],
+  "passed": false,
+  "error": "plru_4 failed, exit 22\nReading pref.tcl\n\n# 2020.1\n\n# vsim -c -onfinish stop -voptargs=\"+acc\" -l /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/plru_negative_timeout/plru_4.transcript -wlf /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/plru_negative_timeout/plru_4.wlf work.plru_tb \"+SEED=1\" \"+INJECT=timeout\" \"+WATCHDOG=32\" -do \"do \"/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/sim/batch.do\"\" -gENTRIES=4 \n# Start time: 00:43:59 on Oct 20,2026\n# Loading sv_std.std\n# Loading work.plru_tb\n# Loading work.tree_plru\n# do \"/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/sim/batch.do\"\n# ** Fatal: PLRU_WATCHDOG\n#    Time: 325 ns  Scope: plru_tb File: /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/tb/plru_tb.sv Line: 58\n# ** Note: $finish    : /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/tb/plru_tb.sv(58)\n#    Time: 325 ns  Iteration: 1  Instance: /plru_tb\n# Break in Module plru_tb at /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/tb/plru_tb.sv line 58\n# RUN_INCOMPLETE_BREAK\n# End time: 00:44:00 on Oct 20,2026, Elapsed time: 0:00:01\n# Errors: 1, Warnings: 0\n"
+}

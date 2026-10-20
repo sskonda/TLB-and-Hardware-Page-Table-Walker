@@ -1,0 +1,18 @@
+# vsim -c -onfinish stop -voptargs="+acc" -l /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/negative_path/translation_4.transcript -wlf /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/negative_path/translation_4.wlf work.translation_tb "+SEED=1" "+IMAGE=/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/negative_path/inputs/page_table.mem" "+LOG=/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/negative_path/translation_4.jsonl" "+RUNID=20261020T044337968935Z_translation_4_s1" "+VARIABLE=0" "+EMPTY=0" "+INJECT=path" -do "do "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/sim/batch.do"" -gENTRIES=4 
+# Start time: 00:43:38 on Oct 20,2026
+# Loading sv_std.std
+# Loading work.vm_pkg
+# Loading work.translation_tb
+# Loading work.translation_unit
+# Loading work.tlb
+# Loading work.tree_plru
+# Loading work.page_table_walker
+# do "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/sim/batch.do"
+# ** Fatal: TRANSLATION_CHECK_FAILED PTE presentation path N=4 cycle=3 txn=1
+#    Time: 35001 ps  Scope: translation_tb.check File: /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/tb/translation_tb.sv Line: 187
+# ** Note: $finish    : /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/tb/translation_tb.sv(187)
+#    Time: 35001 ps  Iteration: 0  Instance: /translation_tb
+# Break in Task check at /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/tb/translation_tb.sv line 187
+# RUN_INCOMPLETE_BREAK
+# End time: 00:43:39 on Oct 20,2026, Elapsed time: 0:00:01
+# Errors: 1, Warnings: 0

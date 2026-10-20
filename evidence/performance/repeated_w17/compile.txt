@@ -1,0 +1,20 @@
+
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+Start time: 01:04:47 on Oct 20,2026
+vlog -sv -work work /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/rtl/vm_pkg.sv /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/rtl/tree_plru.sv /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/rtl/tlb.sv /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/rtl/page_table_walker.sv /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/rtl/translation_unit.sv /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/tb/plru_tb.sv /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/tb/tlb_tb.sv /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/tb/translation_tb.sv 
+-- Compiling package vm_pkg
+-- Compiling module tree_plru
+-- Compiling module tlb
+-- Importing package vm_pkg
+-- Compiling module page_table_walker
+-- Compiling module translation_unit
+-- Compiling module plru_tb
+-- Compiling module tlb_tb
+-- Compiling module translation_tb
+
+Top level modules:
+	plru_tb
+	tlb_tb
+	translation_tb
+End time: 01:04:47 on Oct 20,2026, Elapsed time: 0:00:00
+Errors: 0, Warnings: 0

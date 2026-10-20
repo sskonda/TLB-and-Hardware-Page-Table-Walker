@@ -1,0 +1,54 @@
+{
+  "schema": 1,
+  "run": "20261020T044124202019Z_empty_16_s1",
+  "capacity": 16,
+  "variable_latency": false,
+  "performance": false,
+  "counters": {
+    "accepted": 0,
+    "completed": 0,
+    "canceled": 0,
+    "hits": 0,
+    "misses": 0,
+    "walks": 0,
+    "first_results": 0,
+    "latency_sum": 0,
+    "consumption_sum": 0
+  },
+  "coverage_bins": 0,
+  "groups": {
+    "whole": {
+      "accepted": 0,
+      "completed": 0,
+      "hits": 0,
+      "misses": 0,
+      "hit_rate": null,
+      "miss_rate": null,
+      "average_latency": null,
+      "walks": 0,
+      "stall_cycles": 0
+    },
+    "cold": {
+      "accepted": 0,
+      "completed": 0,
+      "hits": 0,
+      "misses": 0,
+      "hit_rate": null,
+      "miss_rate": null,
+      "average_latency": null,
+      "walks": 0,
+      "stall_cycles": 0
+    },
+    "post_warmup": {
+      "accepted": 0,
+      "completed": 0,
+      "hits": 0,
+      "misses": 0,
+      "hit_rate": null,
+      "miss_rate": null,
+      "average_latency": null,
+      "walks": 0,
+      "stall_cycles": 0
+    }
+  }
+}

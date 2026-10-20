@@ -1,0 +1,4 @@
+plru_4 PASS
+plru_8 PASS
+plru_16 PASS
+Run records: /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/plru

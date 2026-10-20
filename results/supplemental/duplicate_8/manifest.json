@@ -1,0 +1,151 @@
+{
+  "schema": 1,
+  "suite": "translation",
+  "entries": "8",
+  "seed": 1,
+  "injection": "duplicate",
+  "started_utc": "20261020T155122798763Z",
+  "programs": {
+    "vlib": [
+      "/home/sanat/.local/bin/vlib"
+    ],
+    "vlog": [
+      "/home/sanat/intelFPGA/20.1/modelsim_compat/usr/lib/i386-linux-gnu/ld-linux.so.2",
+      "/home/sanat/intelFPGA/20.1/modelsim_ase/linuxaloem/vlog"
+    ],
+    "vsim": [
+      "/home/sanat/.local/bin/vsim"
+    ],
+    "tclsh": [
+      "/home/sanat/anaconda3/bin/tclsh"
+    ]
+  },
+  "source_commit": "519062811f0ead885d63d970472e621d4576663e",
+  "working_tree": "",
+  "input_sha256": {
+    "rtl/page_table_walker.sv": "e0aa00202833758ac010893b622b701c2ac307337f3bb9ba81d7e1861af3fa8a",
+    "rtl/tlb.sv": "c1261ee9993895c542e9b8d0fef4522331913ebc1b54d966af0973e6b8822dfe",
+    "rtl/translation_unit.sv": "208e2a71a8c343f20cf4104d0cf393031615e578a809c273091d6c8be7a143b5",
+    "rtl/tree_plru.sv": "ab174b2b5756191bbb6cb2a629b5ec9d0f51d567ee0f7eb49aed60ea85967259",
+    "rtl/vm_pkg.sv": "447a492403c54cb09428fc693d68875ed9f8e86f1d5ad97dff408d97f29c4546",
+    "sim/README.md": "95d54f1bed3cd05ff6322d4a16ef16742fe3ac4381919bd2c7a1cfa0ec63bd34",
+    "sim/batch.do": "95d780b55ba84dd3472225eb18b8a2cbfa2ef7dd0fdbdd9f55a85cb0ee1dce40",
+    "sim/compile.tcl": "6e4a7191d7c8aad5eaa49445be9fe4e1994378cd334a93c06bcc58bd8b64fba8",
+    "sim/experiments.py": "2ff89194c733a70a1adfd979d0454a0d036754ce6812612b04d0fb91e015bdb9",
+    "sim/regress.py": "f5ffebd96d8f8ed80ea09a5e55f5d8fd4846ceb0fdea865db8f19d039ef1ce5e",
+    "sim/replay.py": "2b17f15f86925f4c2c67c060cff3e88a478e53e634b98e4f6369dc5d392522c5",
+    "sim/reproduce.py": "4ad38021a5313cb065e53e0896db18d51d87d30c0285db4eb23f1a6ea9ef94d2",
+    "sim/run.py": "b4706c1e5a254dab3a995e398451903ade52e94af55e76b2049c2fbe65fee30b",
+    "tb/plru_tb.sv": "ed4cc896a5adf84aa2f9870abb35ae2c3c18fa1f99f3baa326c6ab0e48b0801b",
+    "tb/tlb_tb.sv": "ecb79924d23987be9930ea4c320943eed54aa94e58b31f06096dffb5d53021b5",
+    "tb/translation_tb.sv": "c3f84bdb3c58299dfe23d5c5ccdd75d7cad383cc89536bec12923af64c27d164",
+    "tools/analyze.py": "1bdb134ab0cd0fd3396987b0a0bbb3c57b61d5a9abe1dcc59a0da96c91da56b3",
+    "tools/coverage_report.py": "f072a24f637bab7bd69e8b325f9284d33ca8e7d5b0f9eca08f8a89ce534142db",
+    "tools/evidence.py": "369b514069cb3ef4614f0a04d0939173b15c6ead337a5b31db65247014bbb2fc",
+    "tools/make_inputs.py": "27da48c101cbdfd96caf3e413bfa692a0b6052854f87aff98fe6c97a9544b1f6",
+    "tools/plot_results.py": "548ad35b38250fbdedc23d87fa59defb405e566448df502b4426d38d411f0c4e"
+  },
+  "steps": [
+    {
+      "name": "version",
+      "command": [
+        "/home/sanat/.local/bin/vsim",
+        "-version"
+      ],
+      "cwd": "/home/sanat/tlb-work-private/duplicate capacity checks/duplicate_8",
+      "exit": 0
+    },
+    {
+      "name": "compile",
+      "command": [
+        "/home/sanat/anaconda3/bin/tclsh",
+        "/home/sanat/tlb-work-private/complete clean checkout/sim/compile.tcl"
+      ],
+      "cwd": "/home/sanat/tlb-work-private/duplicate capacity checks/duplicate_8",
+      "exit": 0
+    },
+    {
+      "name": "translation_8",
+      "command": [
+        "/home/sanat/.local/bin/vsim",
+        "-c",
+        "-onfinish",
+        "stop",
+        "-voptargs=+acc",
+        "-l",
+        "/home/sanat/tlb-work-private/duplicate capacity checks/duplicate_8/translation_8.transcript",
+        "-wlf",
+        "/home/sanat/tlb-work-private/duplicate capacity checks/duplicate_8/translation_8.wlf",
+        "-gENTRIES=8",
+        "work.translation_tb",
+        "+SEED=1",
+        "+IMAGE=/home/sanat/tlb-work-private/duplicate capacity checks/duplicate_8/inputs/page_table.mem",
+        "+LOG=/home/sanat/tlb-work-private/duplicate capacity checks/duplicate_8/translation_8.jsonl",
+        "+RUNID=20261020T155122798763Z_translation_8_s1",
+        "+VARIABLE=0",
+        "+EMPTY=0",
+        "+INJECT=duplicate",
+        "-do",
+        "do \"/home/sanat/tlb-work-private/complete clean checkout/sim/batch.do\""
+      ],
+      "cwd": "/home/sanat/tlb-work-private/duplicate capacity checks/duplicate_8",
+      "exit": 22
+    }
+  ],
+  "passed": false,
+  "inputs": {
+    "schema": 1,
+    "generator": "xorshift32-v1",
+    "base": 2147483648,
+    "length": 8192,
+    "warmup": 1024,
+    "root_ppn": 1,
+    "memory_latency": 5,
+    "clock_ns": 10,
+    "seeds": [
+      1,
+      7,
+      42
+    ],
+    "traces": [
+      "sequential",
+      "strided",
+      "random_s1",
+      "random_s7",
+      "random_s42",
+      "repeated_w2",
+      "repeated_w3",
+      "repeated_w4",
+      "repeated_w5",
+      "repeated_w7",
+      "repeated_w8",
+      "repeated_w9",
+      "repeated_w15",
+      "repeated_w16",
+      "repeated_w17",
+      "repeated_w32"
+    ],
+    "sha256": {
+      "page_table.mem": "728d5da41983bbb588ebcb2ca02652583c3731f2f5826176ae3559c708caaf55",
+      "random_s1.trace": "bf4f9c253866aa68d81bdd97a21e10e5cb0b44d738e9d568cc3a6697f320cc0b",
+      "random_s42.trace": "7e2f56335a1576899b654f87f97b5950deec731d0ebfef7956bf091c580e1521",
+      "random_s7.trace": "5d8c69d2464762f261f4101076009f6aa79aa75407a28b35136b6c89116bc816",
+      "repeated_w15.trace": "862d8eef3f40e2ceb9d09d1f26000abe806a01b8c2450594aca0a145c5a6920a",
+      "repeated_w16.trace": "5929533423d8c3ddc33850948c7fdd90278493714cfb8599e865a89727d42b09",
+      "repeated_w17.trace": "61a8807ce12268b3956f89a67142c4163de1cdde44dff591338f83dead2b5d60",
+      "repeated_w2.trace": "8736e85cd92b5450a0f83f062cab7e6e4b369d6b5697e66b8633b0cd2c759a96",
+      "repeated_w3.trace": "0ebfe1607a2fcd3652402a16ab6dd98d6d060a6aec1af529ab2a1f3b10c832e0",
+      "repeated_w32.trace": "929b00ec360d6643968e9e97c3cba8d110789a291aa7fb03466b799c5e14e04e",
+      "repeated_w4.trace": "51369ffc15e6f0ed33da16d6d002ac1d5f61a955f54da8c0ccad1ce8dbcf26a7",
+      "repeated_w5.trace": "528b279dd93f87c70a03a895db5a7e6c3a2be2d87a6eb8fe5b26e50b22bdbcf9",
+      "repeated_w7.trace": "9b549149dac31d417c91627dd8919ed2a2459d490f75038407e783e5f20f0181",
+      "repeated_w8.trace": "f65bca3320e4d49536fdd7fed06cfd6795a2257a3c145c588b6facfe86c41843",
+      "repeated_w9.trace": "4ce2c88233372723741e41aa042832307b6613553001b36f947a8075c0117233",
+      "sequential.trace": "d1ee4087ecaa206f6d633b8dd3cf33bafccf15b4a5aab2c77f9662e04a27d008",
+      "strided.trace": "77803ecbf914fd04d5d8bc52dbb4e85b4492aa4f4cb18262a569d1adf3a54cb1"
+    }
+  },
+  "trace": null,
+  "variable_latency": false,
+  "error": "translation_8 failed, exit 22\nReading pref.tcl\n\n# 2020.1\n\n# vsim -c -onfinish stop -voptargs=\"+acc\" -l /home/sanat/tlb-work-private/duplicate capacity checks/duplicate_8/translation_8.transcript -wlf /home/sanat/tlb-work-private/duplicate capacity checks/duplicate_8/translation_8.wlf work.translation_tb \"+SEED=1\" \"+IMAGE=/home/sanat/tlb-work-private/duplicate capacity checks/duplicate_8/inputs/page_table.mem\" \"+LOG=/home/sanat/tlb-work-private/duplicate capacity checks/duplicate_8/translation_8.jsonl\" \"+RUNID=20261020T155122798763Z_translation_8_s1\" \"+VARIABLE=0\" \"+EMPTY=0\" \"+INJECT=duplicate\" -do \"do \"/home/sanat/tlb-work-private/complete clean checkout/sim/batch.do\"\" -gENTRIES=8 \n# Start time: 11:51:24 on Oct 20,2026\n# Loading sv_std.std\n# Loading work.vm_pkg\n# Loading work.translation_tb\n# Loading work.translation_unit\n# Loading work.tlb\n# Loading work.tree_plru\n# Loading work.page_table_walker\n# do \"/home/sanat/tlb-work-private/complete clean checkout/sim/batch.do\"\n# ** Fatal: TRANSLATION_CHECK_FAILED multiple lookup matches N=8 cycle=17 txn=2\n#    Time: 175 ns  Scope: translation_tb.check File: /home/sanat/tlb-work-private/complete clean checkout/tb/translation_tb.sv Line: 187\n# ** Note: $finish    : /home/sanat/tlb-work-private/complete clean checkout/tb/translation_tb.sv(187)\n#    Time: 175 ns  Iteration: 1  Instance: /translation_tb\n# Break in Task check at /home/sanat/tlb-work-private/complete clean checkout/tb/translation_tb.sv line 187\n# RUN_INCOMPLETE_BREAK\n# End time: 11:51:24 on Oct 20,2026, Elapsed time: 0:00:00\n# Errors: 1, Warnings: 0\n"
+}

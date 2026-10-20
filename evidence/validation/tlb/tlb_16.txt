@@ -1,0 +1,20 @@
+Reading pref.tcl
+
+# 2020.1
+
+# vsim -c -onfinish stop -voptargs="+acc" -l /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/tlb/tlb_16.transcript -wlf /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/tlb/tlb_16.wlf work.tlb_tb "+SEED=1" -do "do "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/sim/batch.do"" -gENTRIES=16 
+# Start time: 00:41:23 on Oct 20,2026
+# Loading sv_std.std
+# Loading work.vm_pkg
+# Loading work.tlb_tb
+# Loading work.tlb
+# Loading work.tree_plru
+# do "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/sim/batch.do"
+# TLB_PASS N=16 checks=550
+# ** Note: $finish    : /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/tb/tlb_tb.sv(91)
+#    Time: 2780 ns  Iteration: 1  Instance: /tlb_tb
+# Break in Module tlb_tb at /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/tb/tlb_tb.sv line 91
+# Stopped at /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/tb/tlb_tb.sv line 91
+# RUN_COMPLETE
+# End time: 00:41:23 on Oct 20,2026, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0

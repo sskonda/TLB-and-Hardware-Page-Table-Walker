@@ -1,0 +1,70 @@
+{
+  "schema": 1,
+  "kind": "ModelSim native waveform replay",
+  "case": "completion",
+  "title": "Completed checks and zero failures",
+  "start_ns": 161980,
+  "end_ns": 162011,
+  "transactions": [],
+  "event_seq": 26501,
+  "cursor_ns": 162010,
+  "source_commit": "a1d99ee2c83f29c0ef101bbe72a2f68f06361917",
+  "run_id": "20261020T044128702411Z_translation_16_s1",
+  "entries": 16,
+  "seed": 1,
+  "source_log_sha256": "9006dad1c5d30dd9a2a7efe0a12ce9539176370f46b1bea5a1e541c21871cf41",
+  "source_wlf_sha256": "7f42fed2d2aa1a408554c9ddecc65393380486d81de4586ae1d5d41816ff3416",
+  "signal_radices": [
+    [
+      "/translation_tb/dut/clk",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/reset",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/flush",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/req_valid",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/resp_valid",
+      "binary"
+    ],
+    [
+      "/translation_tb/completed",
+      "unsigned"
+    ],
+    [
+      "/translation_tb/failures",
+      "unsigned"
+    ]
+  ],
+  "command": [
+    "/home/sanat/.local/bin/vsim",
+    "-gui",
+    "-view",
+    "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/results/screenshots/N16_s1_completion/translation_16.wlf",
+    "-l",
+    "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/results/screenshots/N16_s1_completion/replay.transcript",
+    "-do",
+    "do \"/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/results/screenshots/N16_s1_completion/focus.do\""
+  ],
+  "screenshot_status": "captured",
+  "x11_window": "0x260043c",
+  "exit": 0,
+  "sha256": {
+    "focus.do": "893aa1b39f0f9a523d49af98447d6954bd201a15529bde1971761518b5b70288",
+    "native.ps": "2c8c5c26a4bbf3c77300d9cddf64f5264c500e8912d38e3b7b9c3414a8eb7cd4",
+    "native_rendered.png": "367b2b755d1c9847af9a4a8e1d247c74e00efa2a2a32b4a5bb8bfb1899c31e0f",
+    "replay.transcript": "5e08b33bcfb34d3d7bbf45aaf632264542ea216dc4668fbd01e0d783b251d6e6",
+    "screenshot_original.png": "4acd397ed75a36947e0a4421c287a3c568ffb3892bbda887e1350a515971b518",
+    "stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "transcript_screenshot_original.png": "48524a132622c5e88088e880905e8e24e00a9c739ade347b9441ba4e38912b6e",
+    "translation_16.wlf": "7f42fed2d2aa1a408554c9ddecc65393380486d81de4586ae1d5d41816ff3416"
+  }
+}

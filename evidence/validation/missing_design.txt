@@ -1,0 +1,13 @@
+Reading pref.tcl
+
+# 2020.1
+
+# vsim -c work.missing_expected_design -do "quit -f -code 31" 
+# Start time: 00:44:02 on Oct 20,2026
+# ** Error: (vsim-3170) Could not find 'missing_expected_design'.
+#         Searched libraries:
+#             /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/regression_20261020T044108739864Z/plru/work
+# Error loading design
+Error loading design
+# End time: 00:44:02 on Oct 20,2026, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0

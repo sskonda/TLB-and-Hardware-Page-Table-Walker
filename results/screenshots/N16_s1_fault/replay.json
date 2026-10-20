@@ -1,0 +1,135 @@
+{
+  "schema": 1,
+  "kind": "ModelSim native waveform replay",
+  "case": "fault",
+  "title": "Final-level PTE fault",
+  "start_ns": 14610,
+  "end_ns": 14775,
+  "transactions": [
+    124
+  ],
+  "event_seq": 2349,
+  "cursor_ns": 14754.999,
+  "source_commit": "a1d99ee2c83f29c0ef101bbe72a2f68f06361917",
+  "run_id": "20261020T044128702411Z_translation_16_s1",
+  "entries": 16,
+  "seed": 1,
+  "source_log_sha256": "9006dad1c5d30dd9a2a7efe0a12ce9539176370f46b1bea5a1e541c21871cf41",
+  "source_wlf_sha256": "7f42fed2d2aa1a408554c9ddecc65393380486d81de4586ae1d5d41816ff3416",
+  "signal_radices": [
+    [
+      "/translation_tb/dut/clk",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/reset",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/flush",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/req_valid",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/req_ready",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/req_va",
+      "hexadecimal"
+    ],
+    [
+      "/translation_tb/dut/req_cookie",
+      "unsigned"
+    ],
+    [
+      "/translation_tb/dut/lookup_hit",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/walker/va_q",
+      "hexadecimal"
+    ],
+    [
+      "/translation_tb/dut/walker/state_q",
+      "symbolic"
+    ],
+    [
+      "/translation_tb/dut/walker/level_q",
+      "unsigned"
+    ],
+    [
+      "/translation_tb/dut/mem_req_valid",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/mem_req_ready",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/mem_req_addr",
+      "hexadecimal"
+    ],
+    [
+      "/translation_tb/dut/mem_resp_valid",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/mem_resp_cookie",
+      "unsigned"
+    ],
+    [
+      "/translation_tb/dut/mem_resp_data",
+      "hexadecimal"
+    ],
+    [
+      "/translation_tb/dut/fill_valid",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/resp_valid",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/resp_ready",
+      "binary"
+    ],
+    [
+      "/translation_tb/dut/resp_cookie",
+      "unsigned"
+    ],
+    [
+      "/translation_tb/dut/resp_pa",
+      "hexadecimal"
+    ],
+    [
+      "/translation_tb/dut/resp_fault",
+      "symbolic"
+    ]
+  ],
+  "command": [
+    "/home/sanat/.local/bin/vsim",
+    "-gui",
+    "-view",
+    "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/results/screenshots/N16_s1_fault/translation_16.wlf",
+    "-l",
+    "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/results/screenshots/N16_s1_fault/replay.transcript",
+    "-do",
+    "do \"/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/results/screenshots/N16_s1_fault/focus.do\""
+  ],
+  "screenshot_status": "captured",
+  "x11_window": "0x260043c",
+  "exit": 0,
+  "sha256": {
+    "focus.do": "20209867bf6a8c64d72f25803422137235a3dcb20b0fc2c4deacdb4f8cc2bb9a",
+    "native.ps": "c725141e46df1d026c4b2a57b697400efce95bebd2faa1565962c4416398b535",
+    "native_rendered.png": "343aead51c0367cb8763b74594e3a2e02e71b22d2d5df0b9efe9bd1724f5f11f",
+    "replay.transcript": "18502ddbaf444a575db1c4076f413957185a68a62e76e2a586b63442d0c7e163",
+    "screenshot_original.png": "494fa646f2c54720897eda1f98b26433b479bfdd5f1d52ea6619f019c6f19f30",
+    "stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "translation_16.wlf": "7f42fed2d2aa1a408554c9ddecc65393380486d81de4586ae1d5d41816ff3416"
+  }
+}

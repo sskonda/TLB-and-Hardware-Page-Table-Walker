@@ -1,0 +1,52 @@
+{
+  "schema": 1,
+  "generator": "xorshift32-v1",
+  "base": 2147483648,
+  "length": 8192,
+  "warmup": 1024,
+  "root_ppn": 1,
+  "memory_latency": 5,
+  "clock_ns": 10,
+  "seeds": [
+    1,
+    7,
+    42
+  ],
+  "traces": [
+    "sequential",
+    "strided",
+    "random_s1",
+    "random_s7",
+    "random_s42",
+    "repeated_w2",
+    "repeated_w3",
+    "repeated_w4",
+    "repeated_w5",
+    "repeated_w7",
+    "repeated_w8",
+    "repeated_w9",
+    "repeated_w15",
+    "repeated_w16",
+    "repeated_w17",
+    "repeated_w32"
+  ],
+  "sha256": {
+    "page_table.mem": "728d5da41983bbb588ebcb2ca02652583c3731f2f5826176ae3559c708caaf55",
+    "random_s1.trace": "bf4f9c253866aa68d81bdd97a21e10e5cb0b44d738e9d568cc3a6697f320cc0b",
+    "random_s42.trace": "7e2f56335a1576899b654f87f97b5950deec731d0ebfef7956bf091c580e1521",
+    "random_s7.trace": "5d8c69d2464762f261f4101076009f6aa79aa75407a28b35136b6c89116bc816",
+    "repeated_w15.trace": "862d8eef3f40e2ceb9d09d1f26000abe806a01b8c2450594aca0a145c5a6920a",
+    "repeated_w16.trace": "5929533423d8c3ddc33850948c7fdd90278493714cfb8599e865a89727d42b09",
+    "repeated_w17.trace": "61a8807ce12268b3956f89a67142c4163de1cdde44dff591338f83dead2b5d60",
+    "repeated_w2.trace": "8736e85cd92b5450a0f83f062cab7e6e4b369d6b5697e66b8633b0cd2c759a96",
+    "repeated_w3.trace": "0ebfe1607a2fcd3652402a16ab6dd98d6d060a6aec1af529ab2a1f3b10c832e0",
+    "repeated_w32.trace": "929b00ec360d6643968e9e97c3cba8d110789a291aa7fb03466b799c5e14e04e",
+    "repeated_w4.trace": "51369ffc15e6f0ed33da16d6d002ac1d5f61a955f54da8c0ccad1ce8dbcf26a7",
+    "repeated_w5.trace": "528b279dd93f87c70a03a895db5a7e6c3a2be2d87a6eb8fe5b26e50b22bdbcf9",
+    "repeated_w7.trace": "9b549149dac31d417c91627dd8919ed2a2459d490f75038407e783e5f20f0181",
+    "repeated_w8.trace": "f65bca3320e4d49536fdd7fed06cfd6795a2257a3c145c588b6facfe86c41843",
+    "repeated_w9.trace": "4ce2c88233372723741e41aa042832307b6613553001b36f947a8075c0117233",
+    "sequential.trace": "d1ee4087ecaa206f6d633b8dd3cf33bafccf15b4a5aab2c77f9662e04a27d008",
+    "strided.trace": "77803ecbf914fd04d5d8bc52dbb4e85b4492aa4f4cb18262a569d1adf3a54cb1"
+  }
+}

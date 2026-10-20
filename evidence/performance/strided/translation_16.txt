@@ -1,0 +1,22 @@
+Reading pref.tcl
+
+# 2020.1
+
+# vsim -c -onfinish stop -voptargs="+acc" -l /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/experiments_20261020T044708287731Z/strided/translation_16.transcript -wlf /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/experiments_20261020T044708287731Z/strided/translation_16.wlf work.translation_tb "+SEED=1" "+IMAGE=/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/experiments_20261020T044708287731Z/inputs/page_table.mem" "+LOG=/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/experiments_20261020T044708287731Z/strided/translation_16.jsonl" "+RUNID=20261020T044728995992Z_translation_16_s1" "+VARIABLE=0" "+EMPTY=0" "+TRACE=/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/runs/experiments_20261020T044708287731Z/inputs/strided.trace" -do "do "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/sim/batch.do"" -gENTRIES=16 
+# Start time: 00:48:57 on Oct 20,2026
+# Loading sv_std.std
+# Loading work.vm_pkg
+# Loading work.translation_tb
+# Loading work.translation_unit
+# Loading work.tlb
+# Loading work.tree_plru
+# Loading work.page_table_walker
+# do "/home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/sim/batch.do"
+# TRANSLATION_PASS N=16 accepted=8192 completed=8192 canceled=0 checks=18273770
+# ** Note: $finish    : /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/tb/translation_tb.sv(859)
+#    Time: 1146930 ns  Iteration: 1  Instance: /translation_tb
+# Break in NamedBeginStat stimulus at /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/tb/translation_tb.sv line 859
+# Stopped at /home/sanat/projects/github_TLB-and-Hardware-Page-Table-Walker/TLB-and-Hardware-Page-Table-Walker/tb/translation_tb.sv line 859
+# RUN_COMPLETE
+# End time: 00:49:30 on Oct 20,2026, Elapsed time: 0:00:33
+# Errors: 0, Warnings: 0
