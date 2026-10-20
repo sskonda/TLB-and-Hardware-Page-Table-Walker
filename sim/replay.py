@@ -93,6 +93,9 @@ def main():
     chosen = cases[args.case]
     focus_event = next(event for event in events if event['seq']==chosen['event_seq'])
     chosen['cursor_ns'] = focus_event['time_ns'] + (0.001 if focus_event['phase']=='post' else -0.001)
+    if args.case=='completion':
+        chosen['cursor_ns'] = focus_event['time_ns']
+        chosen['end_ns'] = focus_event['time_ns']+1
     prefix = '/translation_tb/dut/'
     signals = [('clk','binary'), ('reset','binary'), ('flush','binary')]
     if args.case == 'full_flush':
