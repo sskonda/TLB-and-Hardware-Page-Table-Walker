@@ -45,20 +45,42 @@ revisions. Historical path and merge-parent inventories were generated with
 | [tlb-v](https://github.com/Naminar/tlb-v) | aa62aea79953fe15531ca5f74b7f255a600f2bb4 | 14 | 100 | 12 | MIT |
 | [Stitt tutorial](https://github.com/ARC-Lab-UF/sv-tutorial) | 212f2850a9c848508132221a8b8b7d70a239337e | 14 | 382 | 21 | GPL-3.0 |
 
-Current semantic review is **partial**. BSC's current PLRU implementation and
-TLB lookup/invalidation sections were read, along with the fd7131d, 01cc68e,
-c8554a9 patches and b502b4f's simulator scripts. The removal in 87237d0 was
-confirmed by its change inventory, not a full semantic review of its deleted
-bench. CVA5's current walker and permission checker were read along with the
-ee55226, 7d94630, 01fde60 and e72c948 patches. tlb-v's dca03c2 patch, current
-TLB lookup/replacement sections and complete top-level `tlb_tb.v` were read.
-Complete semantic review of all relevant historical changes and merge-parent
-differences remains in progress; no upstream defect has been locally reproduced.
+[reference-history.json](reference-history.json) records the complete reachable
+graph, all fetched ref names/tips, and changed historical paths separately against
+**each parent**, including roots and merge parents. Its 72/962/112 parent
+comparisons cover BSC/CVA5/tlb-v respectively. The tutorial has 403 comparisons.
+No mirror, source extraction, or probe is published here. Hidden/unadvertised
+remote objects and unreachable commits are outside the meaning of reachable.
 
-The historical path filter identified 60 BSC, 69 CVA5, and 60 tlb-v candidate
-revisions touching MMU/TLB-related paths. This filter is a review aid, not proof
-that integrated changes elsewhere are irrelevant. Renames include BSC's
-`rtl/` to `hw/rtl/` and back, and CVA5's `core/mmu.sv` to `core/mmu/mmu.sv`.
+Semantic review is **selected**, not exhaustive review of every line in these
+repositories. The ledger flags 17 BSC, 18 CVA5 and 3 tlb-v revisions where selected
+patch/code semantics were inspected; a flag does not mean the entire commit was
+reviewed. BSC review included current TLB lookup/invalidation and PLRU, the complete
+common PLRU change history, PPN/invalid-PTE fixes, latch/default and integer-width
+changes, A/D fault policy changes, and the historical simulator scripts. Deleted
+benches and the large generated Chisel and hypervisor blocks were inspected by
+inventory or selected excerpts, not fully reviewed or executed. CVA5 review
+included its current walker/permission unit, changed-code excerpts through the
+MMU/TLB candidate history, old-to-new TLB pipeline/refill paths, discarded-return
+tracking, validity, and its byte-address to word-address memory-interface change.
+Unrelated CPU/AXI implementation details were not exhaustively reviewed.
+tlb-v review included the PLRU inversion patch, hit/miss pulse fix, current lookup
+and insertion sections, the pipeline integration patch, and the complete current
+top-level bench. Most earlier integration patches received subject/path triage,
+not complete semantic review. No upstream defect has been locally reproduced.
+
+An initial path filter found 60/69/60 candidate revisions. It was insufficient:
+`adapter` matched a loose `pte` substring, while BSC's common `pseudoLRU` path
+needed separate review. The final ledger therefore inventories **all** historical
+paths without that filter. Renames include BSC's `src/rtl/`, `rtl/`, `hw/rtl/`
+and return to `rtl/`, and CVA5's `core/mmu.sv` to `core/mmu/mmu.sv`.
+
+The two BSC merge commits and all 41 CVA5 and 12 tlb-v merges are represented
+against every parent; ancestry enumeration is not treated as semantic coverage.
+Branch-only changes, deleted simulation infrastructure, and alternative interface
+generations help identify failure modes but do not set this project's interface.
+The review supports the local regression targets below; it certifies none of the
+upstream implementations.
 
 ## Findings used to define regressions
 
@@ -103,6 +125,16 @@ virtualization behavior; CVA5 is an integrated CPU MMU; tlb-v uses set-associati
 and multi-level TLB structures with fixed-way code. Their interfaces and features
 do not define this original standalone implementation. No reference RTL has been
 copied into the project. Preserve upstream notices if any code is later adopted.
+
+CVA5's historical [registered-data lookup fix](https://github.com/openhwfoundation/cva5/commit/fc5fe7d291ec8dbbeddba7c2c60069d9513ad605) and [pipeline balancing](https://github.com/openhwfoundation/cva5/commit/2082e78c2f1b686860463c9620ef5173df393bc1) additionally motivate mutating external context after acceptance and
+checking held results. Its [20a60b3 interface transition](https://github.com/openhwfoundation/cva5/commit/20a60b3c7981978a9ed366a57661f38008e31ffe) removes byte-offset bits
+when changing to word addresses; this project instead fixes physical **byte**
+address units and verifies every PTE address. BSC's latch and loop-width fixes
+reinforce complete defaults and bounded integer loops. tlb-v's pipeline patch
+includes internal timed stimulus and identity-derived incoming physical values;
+those mechanisms are not a memory-backed walker or independent verification
+model and are not adopted. These are design-review conclusions, not execution
+measurements.
 
 ## Design and verification methodology
 
